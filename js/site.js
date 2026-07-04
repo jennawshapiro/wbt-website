@@ -46,7 +46,7 @@
     " .cta-band h2, .cta-buttons, .logo-wall, .faq-item," +
     " .hero-home h1, .hero-home-photo, .hero-service h1, .hero-service .headline-support," +
     " .hero-photo h1, .hero-photo-img, .media-row, .compare .col, .hero-art"
-  ));
+  )).filter(function (el) { return !el.closest("[data-quote-carousel]"); });
   if (revealEls.length) {
     var counts = new Map();
     revealEls.forEach(function (el) {
@@ -120,6 +120,36 @@
 
   renderIndex("caseStudyGrid", "caseStudyFilter", window.WBT_CASE_STUDIES, "case-studies", false);
   renderIndex("articleGrid", "articleFilter", window.WBT_ARTICLES, "articles", true);
+
+  /* ── Featured-quote carousel (one at a time) ───────────────────────────── */
+  var car = document.querySelector("[data-quote-carousel]");
+  if (car) {
+    var qtrack = car.querySelector(".quote-carousel-track");
+    var slides = [].slice.call(car.querySelectorAll(".quote-slide"));
+    var dotsWrap = car.querySelector(".qc-dots");
+    var qarrows = [].slice.call(car.querySelectorAll(".qc-arrow"));
+    if (slides.length < 2) {
+      qarrows.forEach(function (a) { a.style.display = "none"; });
+    } else {
+      var qi = 0, dots = [];
+      slides.forEach(function (_, n) {
+        var b = document.createElement("button");
+        b.className = "qc-dot"; b.type = "button";
+        b.setAttribute("aria-label", "Go to quote " + (n + 1));
+        b.addEventListener("click", function () { qgo(n); });
+        dotsWrap.appendChild(b); dots.push(b);
+      });
+      function qgo(n) {
+        qi = (n + slides.length) % slides.length;
+        qtrack.style.transform = "translateX(" + (-qi * 100) + "%)";
+        dots.forEach(function (d, k) { d.setAttribute("aria-current", k === qi ? "true" : "false"); });
+      }
+      qarrows.forEach(function (btn) {
+        btn.addEventListener("click", function () { qgo(qi + parseInt(btn.dataset.dir, 10)); });
+      });
+      qgo(0);
+    }
+  }
 
   /* ── Current year in footer ────────────────────────────────────────────── */
   [].forEach.call(document.querySelectorAll("[data-year]"), function (el) {
