@@ -771,7 +771,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 
 /* League Spartan Thin display paragraph (offset section intros) */
 .lede-thin {
-  font-family: var(--font-display); font-weight: 200;
+  font-family: var(--font-display); font-weight: 400;   /* League Spartan Regular */
   font-size: clamp(20px, 2.4vw, 26px); line-height: 1.42; letter-spacing: 0; color: var(--ink);
 }
 .section-dark .lede-thin, .section-slate .lede-thin { color: var(--calm-blue); }
