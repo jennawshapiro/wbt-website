@@ -805,6 +805,47 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
   .offset-right { margin-top: 32px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   MOBILE REFINEMENTS — tame the large hero decorations, restack the hero
+   headline below the triptych, and tighten spacing on small screens.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 820px) {
+  .hero-stack-gold { width: clamp(150px, 34vw, 280px); top: auto; bottom: 4px; left: -44px; }
+  .hero-stack-scribble { width: clamp(200px, 48vw, 380px); right: -60px; top: auto; bottom: 40px; }
+  .statement-band { padding: 56px 0 72px; }
+  .hero-svc-deco img { transform: scale(0.62); }
+}
+@media (max-width: 640px) {
+  /* Hero: headline drops below the triptych, dark on cream (legible on a narrow strip) */
+  .hero-home2 { padding: 16px 0 26px; }
+  .hero-home2-frame { padding: 0 20px; }
+  .hero-home2-title {
+    position: static; transform: none; width: auto; text-align: center;
+    color: var(--steady-blue); text-shadow: none;
+    font-size: clamp(30px, 8.5vw, 42px); line-height: 1.03; margin-top: 18px;
+  }
+  .hero-stack-gold { width: 175px; left: -34px; bottom: -4px; }
+  .hero-stack-scribble { width: 220px; right: -84px; bottom: 62px; }
+
+  .statement-band { padding: 34px 0 48px; }
+  .statement { font-size: 20px; line-height: 1.5; }
+  .statement-cta { margin-top: 30px; }
+
+  /* About figure: keep decorations close so they don't smear across the page */
+  .about-figure-blue { left: -66px; top: -30px; width: 84%; opacity: 0.9; }
+  .about-figure-scribble { left: -34px; bottom: -48px; width: 72%; opacity: 1; }
+
+  /* Service heroes: pull the scattered art in tight */
+  .hero-svc { padding: 52px 0 56px; }
+  .hero-svc-deco img { transform: scale(0.5); }
+
+  /* Impact numbers a touch smaller so labels breathe */
+  .stat .num { font-size: clamp(56px, 15vw, 72px); }
+
+  /* Section rhythm */
+  section { padding: 56px 0; }
+}
+
 @media print {
   .site-header, .nav-toggle, .cta-band { display: none; }
   .reveal { opacity: 1 !important; transform: none !important; }
