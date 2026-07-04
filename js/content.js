@@ -21,74 +21,11 @@
 
 window.WBT_CASE_STUDIES = [
   {
-    slug: "campaign-team-retreat-to-align-at-the-start",
-    title: "Campaign Team Retreat to Align at the Start",
-    excerpt: "A kickoff retreat to set norms, routines, and rituals — so a campaign team could move fast together, built on trust.",
-    tags: ["Team Coaching", "Campaign Teams"],
-    img: "assets/case-studies/campaign-team-retreat-to-align-at-the-start.jpg"
-  },
-  {
-    slug: "co-leading-an-organization",
-    title: "Co-leading an Organization",
-    excerpt: "2:2 coaching for co-directors — building the shared language and working agreements to lead an organization together.",
-    tags: ["Team Coaching", "2:2 Coaching"],
-    img: "assets/case-studies/co-leading-an-organization.jpg"
-  },
-  {
-    slug: "repairing-a-ruptured-relationship",
-    title: "Repairing a Ruptured Relationship",
-    excerpt: "When unspoken conflict between two leaders started shaping the whole team, we worked directly with the relationship.",
-    tags: ["Team Coaching", "2:2 Coaching"],
-    img: "assets/case-studies/repairing-a-ruptured-relationship.jpg"
-  },
-  {
-    slug: "leading-together-under-pressure",
-    title: "Leading Together Under Pressure",
-    excerpt: "Team coaching for a group stuck in recurring dynamics — naming the patterns, then building the capacity to adjust.",
-    tags: ["Team Coaching"],
-    img: "assets/case-studies/leading-together-under-pressure.jpg"
-  },
-  {
-    slug: "building-conditions-for-results",
-    title: "Building Conditions for Results",
-    excerpt: "A team retreat to define the norms and routines that let a group deliver — without burning out.",
-    tags: ["Facilitation", "Team Retreat"],
-    img: "assets/case-studies/building-conditions-for-results.jpg"
-  },
-  {
-    slug: "building-trust-and-motivation-in-one-day",
-    title: "Building Trust and Motivation in One Day",
-    excerpt: "One focused day of facilitation to build the trust and momentum a team needed to accelerate together.",
-    tags: ["Facilitation", "Team Retreat"],
-    img: "assets/case-studies/building-trust-and-motivation-in-one-day.jpg"
-  },
-  {
-    slug: "developing-endurance-and-agency",
-    title: "Developing Endurance and Agency",
-    excerpt: "1:1 coaching to help a leader sort what they could control from what they could influence — and lead from there.",
+    slug: "coaching-to-support-leadership-development",
+    title: "Coaching to Support Leadership Development",
+    excerpt: "A 1:1 coaching partnership focused on reflection, skill-building, and more intentional leadership over time.",
     tags: ["Leadership Coaching", "1:1 Coaching"],
-    img: "assets/case-studies/developing-endurance-and-agency.jpg"
-  },
-  {
-    slug: "choosing-the-culture-we-build-on-campaigns",
-    title: "Choosing the Culture We Build on Campaigns",
-    excerpt: "Even under pressure, teams choose the culture they build. This is how one campaign chose theirs, on purpose.",
-    tags: ["Team Coaching", "Campaign Teams"],
-    img: "assets/case-studies/choosing-the-culture-we-build-on-campaigns.jpg"
-  },
-  {
-    slug: "facilitation-to-prepare-for-uncertainty",
-    title: "Facilitation to Prepare for Uncertainty",
-    excerpt: "A retreat series to help a team name their fears, normalize the stress response, and prepare for what was coming.",
-    tags: ["Facilitation", "Retreat Series"],
-    img: "assets/case-studies/facilitation-to-prepare-for-uncertainty.jpg"
-  },
-  {
-    slug: "individual-coaching-for-each-team-member",
-    title: "Individual Coaching for Each Team Member",
-    excerpt: "Pairing team development with 1:1 coaching for every member — so growth happened at both levels at once.",
-    tags: ["Leadership Coaching", "1:1 Coaching"],
-    img: "assets/case-studies/individual-coaching-for-each-team-member.jpg"
+    img: "assets/case-studies/coaching-to-support-leadership-development.jpg"
   },
   {
     slug: "moving-from-stress-to-strategy-with-a-team",
@@ -98,11 +35,74 @@ window.WBT_CASE_STUDIES = [
     img: "assets/case-studies/moving-from-stress-to-strategy-with-a-team.jpg"
   },
   {
-    slug: "coaching-to-support-leadership-development",
-    title: "Coaching to Support Leadership Development",
-    excerpt: "A 1:1 coaching partnership focused on reflection, skill-building, and more intentional leadership over time.",
+    slug: "campaign-team-retreat-to-align-at-the-start",
+    title: "Campaign Team Retreat to Align at the Start",
+    excerpt: "A kickoff retreat to set norms, routines, and rituals — so a campaign team could move fast together, built on trust.",
+    tags: ["Team Coaching", "Campaign Teams"],
+    img: "assets/case-studies/campaign-team-retreat-to-align-at-the-start.jpg"
+  },
+  {
+    slug: "individual-coaching-for-each-team-member",
+    title: "Individual Coaching for Each Team Member",
+    excerpt: "Pairing team development with 1:1 coaching for every member — so growth happened at both levels at once.",
     tags: ["Leadership Coaching", "1:1 Coaching"],
-    img: "assets/case-studies/coaching-to-support-leadership-development.jpg"
+    img: "assets/case-studies/individual-coaching-for-each-team-member.jpg"
+  },
+  {
+    slug: "facilitation-to-prepare-for-uncertainty",
+    title: "Facilitation to Prepare for Uncertainty",
+    excerpt: "A retreat series to help a team name their fears, normalize the stress response, and prepare for what was coming.",
+    tags: ["Facilitation", "Retreat Series"],
+    img: "assets/case-studies/facilitation-to-prepare-for-uncertainty.jpg"
+  },
+  {
+    slug: "choosing-the-culture-we-build-on-campaigns",
+    title: "Choosing the Culture We Build on Campaigns",
+    excerpt: "Even under pressure, teams choose the culture they build. This is how one campaign chose theirs, on purpose.",
+    tags: ["Team Coaching", "Campaign Teams"],
+    img: "assets/case-studies/choosing-the-culture-we-build-on-campaigns.jpg"
+  },
+  {
+    slug: "developing-endurance-and-agency",
+    title: "Developing Endurance and Agency",
+    excerpt: "1:1 coaching to help a leader sort what they could control from what they could influence — and lead from there.",
+    tags: ["Leadership Coaching", "1:1 Coaching"],
+    img: "assets/case-studies/developing-endurance-and-agency.jpg"
+  },
+  {
+    slug: "building-trust-and-motivation-in-one-day",
+    title: "Building Trust and Motivation in One Day",
+    excerpt: "One focused day of facilitation to build the trust and momentum a team needed to accelerate together.",
+    tags: ["Facilitation", "Team Retreat"],
+    img: "assets/case-studies/building-trust-and-motivation-in-one-day.jpg"
+  },
+  {
+    slug: "leading-together-under-pressure",
+    title: "Leading Together Under Pressure",
+    excerpt: "Team coaching for a group stuck in recurring dynamics — naming the patterns, then building the capacity to adjust.",
+    tags: ["Team Coaching"],
+    img: "assets/case-studies/leading-together-under-pressure.jpg"
+  },
+  {
+    slug: "repairing-a-ruptured-relationship",
+    title: "Repairing a Ruptured Relationship",
+    excerpt: "When unspoken conflict between two leaders started shaping the whole team, we worked directly with the relationship.",
+    tags: ["Team Coaching", "2:2 Coaching"],
+    img: "assets/case-studies/repairing-a-ruptured-relationship.jpg"
+  },
+  {
+    slug: "building-conditions-for-results",
+    title: "Building Conditions for Results",
+    excerpt: "A team retreat to define the norms and routines that let a group deliver — without burning out.",
+    tags: ["Facilitation", "Team Retreat"],
+    img: "assets/case-studies/building-conditions-for-results.jpg"
+  },
+  {
+    slug: "co-leading-an-organization",
+    title: "Co-leading an Organization",
+    excerpt: "2:2 coaching for co-directors — building the shared language and working agreements to lead an organization together.",
+    tags: ["Team Coaching", "2:2 Coaching"],
+    img: "assets/case-studies/co-leading-an-organization.jpg"
   }
 ];
 
