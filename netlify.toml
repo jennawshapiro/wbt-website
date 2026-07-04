@@ -1,0 +1,4 @@
+# Netlify configuration — static site, no build step.
+# index.html lives at the repo root, so we publish the root as-is.
+[build]
+  publish = "."
