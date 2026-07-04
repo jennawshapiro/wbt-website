@@ -176,9 +176,9 @@ section { padding: 96px 0; }
   border-bottom: 1px solid var(--rule);
 }
 .nav {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 40px;
+  max-width: 1680px;                    /* match the home-hero image frame so */
+  margin: 0 auto;                       /* the logo & CTA align to its edges   */
+  padding: 0 clamp(40px, 6vw, 120px);
   height: 74px;
   display: flex;
   align-items: center;
@@ -186,7 +186,7 @@ section { padding: 96px 0; }
   gap: 24px;
 }
 .nav-logo { display: inline-flex; align-items: center; }
-.nav-logo img { height: 42px; width: auto; }
+.nav-logo img { height: 48px; width: auto; }   /* ~15% larger */
 .nav-links {
   display: flex;
   align-items: center;
@@ -196,8 +196,9 @@ section { padding: 96px 0; }
 .nav-links a {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 0.01em;
+  font-size: 14px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
   transition: color 150ms var(--ease-state);
@@ -207,7 +208,7 @@ section { padding: 96px 0; }
 /* Services dropdown */
 .nav-dd { position: relative; }
 .nav-dd > button {
-  font-family: var(--font-display); font-weight: 500; font-size: 15px; letter-spacing: 0.01em;
+  font-family: var(--font-display); font-weight: 500; font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase;
   color: var(--ink); background: none; border: 0; cursor: pointer; padding: 0;
   display: inline-flex; align-items: center; gap: 5px;
   transition: color 150ms var(--ease-state);
@@ -684,7 +685,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .hero-home2-frame { position: relative; z-index: 2; max-width: 1680px; margin: 0 auto; padding: 0 clamp(40px, 6vw, 120px); }
 .hero-home2-photo { width: 100%; height: auto; display: block; }
 .hero-home2-title {
-  position: absolute; left: 50%; top: 60%; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: 72%; transform: translate(-50%, -50%);
   width: 92%; text-align: center; color: var(--cream);
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(34px, 6.6vw, 92px); line-height: 1.0; letter-spacing: -0.02em;
@@ -709,7 +710,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
    under the home hero. Centered Lora statement; key phrases marked with
    hand-drawn SVG ink in Intentional Blue; centered CTA; corner decorations.
    ═══════════════════════════════════════════════════════════════════════ */
-.statement-band { position: relative; background: transparent; padding: 40px 0 104px; }
+.statement-band { position: relative; background: transparent; padding: 120px 0 104px; }
 .statement-deco { position: absolute; z-index: 0; pointer-events: none; }
 .statement-gold { left: -90px; top: -150px; width: clamp(240px, 26vw, 500px); }
 .statement-scribble { right: -50px; top: -80px; width: clamp(320px, 38vw, 720px); opacity: 0.92; }
@@ -717,6 +718,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .statement {
   font-family: var(--font-body); font-weight: 400;
   font-size: clamp(19px, 2.4vw, 24px); line-height: 1.55; letter-spacing: -0.01em; color: var(--ink);
+  max-width: 660px; margin-left: auto; margin-right: auto;
 }
 .statement strong { font-weight: 700; }
 .statement-cta { margin-top: 40px; }
