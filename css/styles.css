@@ -362,6 +362,12 @@ section { padding: 96px 0; }
 .card .card-collage img { height: 100%; width: auto; object-fit: contain; }
 .card .card-foot { margin-top: auto; padding-top: 20px; }
 
+/* Bare cards (homepage "What We Do"): no box — icons + text flush-left on the page */
+.cards-bare { gap: clamp(32px, 4vw, 56px); }
+.cards-bare .card { background: transparent; border: 0; padding: 0; }
+.cards-bare .card .card-collage { height: 150px; margin-bottom: 20px; }
+.cards-bare .card .card-collage img { display: block; }   /* trimmed icons sit flush-left */
+
 /* ── Stats ──────────────────────────────────────────────────────────────── */
 .stat-row { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 8px; }
 .stat-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
@@ -725,17 +731,15 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .statement strong { font-weight: 700; }
 .statement-cta { margin-top: 40px; }
 
-/* hand-drawn annotations */
-.anno { position: relative; display: inline-block; white-space: nowrap; }
-.anno strong { position: relative; z-index: 1; }
-.anno svg { position: absolute; z-index: 0; overflow: visible; pointer-events: none; }
-.anno path { fill: none; stroke: var(--intentional-blue); stroke-width: 2.4px; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.anno-circle svg { left: -9%; top: -30%; width: 118%; height: 162%; }
-.anno-underline svg { left: -1%; bottom: -0.34em; width: 103%; height: 0.5em; }
+/* hand-drawn annotations — drawn at runtime by rough-notation (js/rough-notation.js),
+   the same sketch-style engine behind Squarespace's text-highlight marks: an open
+   circle around a phrase and wobbly underlines that draw in on scroll. */
+.anno { position: relative; white-space: nowrap; }
+.rough-annotation { pointer-events: none; }
 
 @media (max-width: 620px) {
   .statement-gold, .statement-scribble { opacity: 0.65; }
-  .anno { white-space: normal; }        /* let long phrases wrap on small screens */
+  .anno[data-anno="underline"] { white-space: normal; }  /* underlines may wrap; keep circled phrase on one line */
 }
 
 /* ═══ Featured-quote carousel (home testimonials) ═══ */
@@ -762,7 +766,10 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .about-teaser { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 64px; align-items: center; }
 .about-figure { position: relative; }
 .about-figure-photo { position: relative; z-index: 1; width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 16px 34px rgba(31,30,30,0.14); }
-.about-figure-blue { position: absolute; z-index: 0; left: -260px; top: -70px; width: 108%; pointer-events: none; }        /* under top-left corner, bleeds off page left */
+.about-figure-blue { position: absolute; z-index: 0; left: -260px; top: -70px; width: 108%; pointer-events: none;
+  /* the source PNG is cropped flat at its bottom edge — fade it so no hard cut shows */
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); }        /* under top-left corner, bleeds off page left */
 .about-figure-scribble { position: absolute; z-index: 2; left: -150px; bottom: -110px; width: 96%; pointer-events: none; } /* off bottom-left corner, 2x larger */
 
 /* CTA sub-text inline link (on dark band) */

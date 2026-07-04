@@ -69,6 +69,39 @@
     }
   }
 
+  /* ── Hand-drawn annotations (rough-notation) ───────────────────────────── */
+  /* Matches the Squarespace text-highlight marks: an open circle around a phrase
+     and wobbly underlines. Elements opt in with data-anno="circle|underline".
+     A fixed seed keeps the wobble stable across reloads (no random redraw). */
+  var annoEls = [].slice.call(document.querySelectorAll("[data-anno]"));
+  if (annoEls.length && window.RoughNotation && window.RoughNotation.annotate) {
+    var annoColor = getComputedStyle(document.documentElement)
+      .getPropertyValue("--intentional-blue").trim() || "#2531A5";
+    var annoReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    annoEls.forEach(function (el, i) {
+      var type = el.getAttribute("data-anno") === "circle" ? "circle" : "underline";
+      var cfg = type === "circle"
+        ? { type: "circle", color: annoColor, strokeWidth: 2.4, padding: [7, 11],
+            iterations: 2, animationDuration: 900 }
+        : { type: "underline", color: annoColor, strokeWidth: 2.6, padding: [2, 1],
+            iterations: 2, multiline: true, animationDuration: 650 };
+      cfg.seed = 42 + i * 7;                 /* deterministic wobble */
+      cfg.animate = !annoReduce;
+      el._anno = window.RoughNotation.annotate(el, cfg);
+    });
+    var showAnno = function (el) { if (el._anno) el._anno.show(); };
+    if (annoReduce || !("IntersectionObserver" in window)) {
+      annoEls.forEach(showAnno);
+    } else {
+      var aio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { showAnno(en.target); aio.unobserve(en.target); }
+        });
+      }, { threshold: 0.9, rootMargin: "0px 0px -8% 0px" });
+      annoEls.forEach(function (el) { aio.observe(el); });
+    }
+  }
+
   /* ── Index card rendering (Our Work + Blog) ────────────────────────────── */
   function cardHTML(item, basePath, isArticle) {
     var tags = (item.tags || []).map(function (t) {
