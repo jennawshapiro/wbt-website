@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Local, machine-specific Claude Code permissions (keep launch.json + serve.py)
+.claude/settings.local.json
+
+# Editor / OS cruft
+Thumbs.db
+*.swp
