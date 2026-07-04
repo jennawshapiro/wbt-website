@@ -12,16 +12,23 @@ tightened to the WBT Brand Guide and made consistent with the **Lead to Win** pa
 
 ---
 
-## Repository & source control
+## Repository, live site & deploys
 
+- **Live site:** **https://workbettertogether.netlify.app** (Netlify, HTTPS)
 - **Repo:** https://github.com/jennawshapiro/wbt-website (private, branch `main`)
 - **Auth:** the GitHub CLI (`gh`) is installed at `~/.local/bin/gh` and set as the git
   credential helper; `~/.local/bin` is on `PATH`, so `git push` / `gh` work in any new
   terminal.
-- **Pushing:** Claude commits and pushes **on request** (not automatically). To push
-  manually: `git add -A && git commit -m "…" && git push`.
-- **Deploy:** not yet live — GitHub Pages can't host a *private* repo on the free plan.
-  See _Open items_ in `docs/PROGRESS.md` for the options.
+- **Pushing:** Claude commits and pushes to GitHub **on request** (not automatically):
+  `git add -A && git commit -m "…" && git push`.
+- **Deploy:** hosted on **Netlify** (team _Work Better Together_). Node + `netlify` CLI
+  are installed under `~/.local/`. Deploys are run from the CLI (not yet auto-building
+  from GitHub), so after pushing, redeploy with:
+  ```sh
+  cd "2026 WBT Website"
+  PATH="$HOME/.local/bin:$PATH" netlify deploy --prod --dir .
+  ```
+  Optional upgrade: connect the repo in the Netlify UI to auto-deploy on every push.
 
 ---
 

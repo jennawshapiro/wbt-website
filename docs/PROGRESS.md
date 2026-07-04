@@ -5,6 +5,7 @@ open. Newest work at the top of the changelog. Companion to [`../README.md`](../
 which covers structure and the publish-a-new-article workflow._
 
 **Last updated:** July 2026
+**Live preview:** https://workbettertogether.netlify.app (Netlify)
 **Repository:** https://github.com/jennawshapiro/wbt-website (private)
 **Live site being ported:** https://www.workbettertogether.coach
 
@@ -95,10 +96,10 @@ directly to them or regenerated.
 
 - **Finish home hero decorations** (paused here) — nudge the watercolor/scribble
   size + placement to taste.
-- **Deploy** — GitHub Pages can't serve a *private* repo on the free plan. Options:
-  (a) make the repo public → free Pages; (b) upgrade to GitHub Pro → private Pages;
-  (c) connect the repo to Netlify or Cloudflare Pages (free, works with private repos,
-  one-time in-browser authorize). Decision pending.
+- **Auto-deploy (optional)** — the site is live on Netlify, but deploys are currently
+  run from the CLI (`netlify deploy --prod`), so a `git push` alone doesn't redeploy.
+  To make every push auto-build, connect the repo in the Netlify UI (Site → Build &
+  deploy → Link repository). Until then, Claude redeploys after pushing.
 - **Forms** — the newsletter signup + any contact form are front-end only; wire to a
   real provider before launch. (Book-a-call / survey already link to live Calendly +
   Typeform.)
@@ -113,10 +114,14 @@ directly to them or regenerated.
 
 ## Changelog
 
-### GitHub setup
-- `git init`, `.gitignore` (ignores `.DS_Store` and local `.claude/settings.local.json`),
-  initial commit (189 files). Installed `gh` 2.96.0, created the private `wbt-website`
-  repo, pushed `main`. Added `~/.local/bin` to PATH.
+### GitHub + Netlify deploy
+- `git init`, `.gitignore` (ignores `.DS_Store`, local `.claude/settings.local.json`,
+  and `.netlify`), initial commit. Installed `gh` 2.96.0, created the private
+  `wbt-website` repo, pushed `main`. Added `~/.local/bin` to PATH.
+- Installed Node 24 LTS + `netlify` CLI under `~/.local/`. Created a Netlify site under
+  the _Work Better Together_ team and deployed → **workbettertogether.netlify.app**.
+  Added `netlify.toml` (publish `.`, no build). Verified all pages/assets serve 200 over
+  HTTPS.
 
 ### Home hero + statement band
 - Added the annotated statement band (hand-drawn circle/underline SVGs, centered CTA).
