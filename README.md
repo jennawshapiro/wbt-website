@@ -7,6 +7,22 @@ tightened to the WBT Brand Guide and made consistent with the **Lead to Win** pa
 
 **This is a first pass to iterate on** — not a finished site. See _Known gaps_ below.
 
+> **Progress & decisions:** see [`docs/PROGRESS.md`](docs/PROGRESS.md) for a running log
+> of what's been built, the reasoning behind key design choices, and what's still open.
+
+---
+
+## Repository & source control
+
+- **Repo:** https://github.com/jennawshapiro/wbt-website (private, branch `main`)
+- **Auth:** the GitHub CLI (`gh`) is installed at `~/.local/bin/gh` and set as the git
+  credential helper; `~/.local/bin` is on `PATH`, so `git push` / `gh` work in any new
+  terminal.
+- **Pushing:** Claude commits and pushes **on request** (not automatically). To push
+  manually: `git add -A && git commit -m "…" && git push`.
+- **Deploy:** not yet live — GitHub Pages can't host a *private* repo on the free plan.
+  See _Open items_ in `docs/PROGRESS.md` for the options.
+
 ---
 
 ## How to preview it
