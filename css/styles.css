@@ -430,44 +430,27 @@ section { padding: 96px 0; }
    Accent is set per page via data-service on .detail-hero (defaults to gold/leadership). */
 .detail-hero {
   color: var(--cream); position: relative; overflow: hidden;
-  /* per-service hero: watercolor + dark base matched to the (duotone) image.
-     --cs-accent      → tag backgrounds + callout rule (true brand accent)
-     --cs-accent-lite → accent TEXT on the dark hero (light enough to read)
-     defaults = leadership / gold */
-  --cs-accent: var(--gold);
-  --cs-accent-lite: var(--gold);
-  --hero-base: #33240a;
-  --hero-wc: url('../assets/Textures/Backgrounds/Radiant Gold/WBT-20260403-Gold-Watercolor-Background-2.jpg');
-  --hero-muted: rgba(249, 248, 242, 0.80);
+  /* The top block is a solid overlay tinted to the case study's own image color
+     (--hero-base, set inline per page and pre-darkened so cream text clears WCAG).
+     Article pages fall back to a per-service default below. Text + tags are
+     cream/neutral so they stay legible on any of the image colors. */
+  --hero-base: #856226;                 /* leadership default (articles) */
+  --hero-muted: rgba(249, 248, 242, 0.82);
   background: var(--hero-base);
 }
-.detail-hero[data-service="leadership"] {
-  --cs-accent: var(--gold); --cs-accent-lite: var(--gold); --hero-base: #33240a;
-  --hero-wc: url('../assets/Textures/Backgrounds/Radiant Gold/WBT-20260403-Gold-Watercolor-Background-2.jpg');
-}
-.detail-hero[data-service="team"] {
-  --cs-accent: var(--calm-blue); --cs-accent-lite: var(--calm-blue); --hero-base: var(--steady-blue);
-  --hero-wc: url('../assets/Textures/Backgrounds/Steady Blue/WBT-20260403-Steady-Blue-Watercolor-Background-2.jpg');
-}
-.detail-hero[data-service="facilitation"] {
-  --cs-accent: var(--ochre); --cs-accent-lite: #E0913F; --hero-base: #3a1d0a;
-  --hero-wc: url('../assets/Textures/Backgrounds/Honest Ochre/WBT-20260403-Honest-Ochre-Watercolor-Background-2.jpg');
-}
-.detail-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: var(--hero-wc);
-  background-size: cover; background-position: center; opacity: 0.34; z-index: 0;
-}
+.detail-hero[data-service="team"]         { --hero-base: #4860c8; }
+.detail-hero[data-service="facilitation"] { --hero-base: #a15324; }
+.detail-hero[data-service="leadership"]   { --hero-base: #856226; }
 .detail-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 56px; align-items: end; padding-top: 84px; padding-bottom: 84px; }
 .detail-hero-main { min-width: 0; }
 .detail-hero .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-.detail-hero .tag { font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steady-blue); background: var(--cs-accent); padding: 5px 10px; border-radius: 2px; }
-.detail-hero h1 { font-size: clamp(34px, 5.4vw, 56px); line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 20px; max-width: 20ch; text-shadow: 0 1px 16px rgba(10, 8, 2, 0.30); }
-.detail-hero .sub { font-family: var(--font-display); font-weight: 500; font-size: clamp(18px, 2.3vw, 23px); color: var(--hero-muted); line-height: 1.38; max-width: 48ch; text-shadow: 0 1px 12px rgba(10, 8, 2, 0.30); }
+.detail-hero .tag { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--cream); padding: 5px 10px; border-radius: 2px; }
+.detail-hero h1 { font-size: clamp(34px, 5.4vw, 56px); line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 20px; max-width: 20ch; }
+.detail-hero .sub { font-family: var(--font-display); font-weight: 500; font-size: clamp(18px, 2.3vw, 23px); color: var(--hero-muted); line-height: 1.38; max-width: 48ch; }
 .detail-hero .byline { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-muted); margin-top: 22px; }
-.detail-hero-callout { border-top: 2px solid var(--cs-accent); padding-top: 16px; }
+.detail-hero-callout { border-top: 2px solid rgba(249, 248, 242, 0.55); padding-top: 16px; }
 .detail-hero-callout .cs-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hero-muted); margin-bottom: 8px; }
-.detail-hero-callout a { display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--cs-accent-lite); text-decoration: none; text-shadow: 0 1px 12px rgba(10, 8, 2, 0.30); }
+.detail-hero-callout a { display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--cream); text-decoration: none; }
 .detail-hero-callout a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .detail-hero-callout p { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--hero-muted); margin-top: 8px; }
 @media (max-width: 760px) {
