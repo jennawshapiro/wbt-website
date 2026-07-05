@@ -47,11 +47,19 @@
          card appears on the Our Work page. Replace every {{TOKEN}}.
          Image paths on this page start with ../  (e.g. ../assets/...).
     ═══════════════════════════════════════════════════════════════════════ -->
-    <header class="detail-hero">
-      <div class="prose-wrap">
-        <div class="tags"><span class="tag">{{CATEGORY 1}}</span><span class="tag">{{CATEGORY 2}}</span></div>
-        <h1>{{CASE STUDY TITLE}}</h1>
-        <p class="sub">{{One-sentence subtitle — the promise or the transformation.}}</p>
+    <!-- Set data-service to leadership | team | facilitation (drives the accent + callout). -->
+    <header class="detail-hero" data-service="team">
+      <div class="wrap detail-hero-grid">
+        <div class="detail-hero-main">
+          <div class="tags"><span class="tag">{{CATEGORY 1}}</span><span class="tag">{{CATEGORY 2}}</span></div>
+          <h1>{{CASE STUDY TITLE}}</h1>
+          <p class="sub">{{One-sentence subtitle — the promise or the transformation.}}</p>
+        </div>
+        <aside class="detail-hero-callout">
+          <div class="cs-eyebrow">Service</div>
+          <a href="../team-coaching.html">{{Service name}}</a>
+          <p>{{Short service descriptor}}</p>
+        </aside>
       </div>
     </header>
 
@@ -89,7 +97,7 @@
 
     <section class="cta-band section-dark">
       <div class="wrap">
-        <div class="eyebrow" style="color: var(--gold);">A call to impact-driven organizations</div>
+        <div class="eyebrow" style="color: var(--gold);">A call to purpose-driven organizations</div>
         <h2>{{Closing headline.}}</h2>
         <p class="sub">{{Closing line that invites a conversation.}}</p>
         <div class="cta-buttons">
@@ -134,6 +142,7 @@
     </div>
   </footer>
 
+  <script src="../js/rough-notation.js"></script>
   <script src="../js/site.js"></script>
 </body>
 </html>

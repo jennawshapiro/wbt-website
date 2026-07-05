@@ -47,12 +47,20 @@
          appears on the Blog page. Replace every {{TOKEN}}.
          Image paths on this page start with ../  (e.g. ../assets/...).
     ═══════════════════════════════════════════════════════════════════════ -->
-    <header class="detail-hero">
-      <div class="prose-wrap">
-        <div class="tags"><span class="tag">{{CATEGORY}}</span></div>
-        <h1>{{ARTICLE TITLE}}</h1>
-        <p class="sub">{{One-sentence deck / summary.}}</p>
-        <p class="byline">Work Better Together &middot; {{Month Day, Year}}</p>
+    <!-- Set data-service to leadership | team | facilitation (drives the accent). -->
+    <header class="detail-hero" data-service="leadership">
+      <div class="wrap detail-hero-grid">
+        <div class="detail-hero-main">
+          <div class="tags"><span class="tag">{{CATEGORY}}</span></div>
+          <h1>{{ARTICLE TITLE}}</h1>
+          <p class="sub">{{One-sentence deck / summary.}}</p>
+          <p class="byline">Work Better Together &middot; {{Month Day, Year}}</p>
+        </div>
+        <aside class="detail-hero-callout">
+          <div class="cs-eyebrow">Filed under</div>
+          <a href="../blog.html">{{CATEGORY}}</a>
+          <p>{{Short descriptor}}</p>
+        </aside>
       </div>
     </header>
 
@@ -127,6 +135,7 @@
     </div>
   </footer>
 
+  <script src="../js/rough-notation.js"></script>
   <script src="../js/site.js"></script>
 </body>
 </html>
