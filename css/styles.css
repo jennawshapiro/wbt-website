@@ -453,6 +453,11 @@ section { padding: 96px 0; }
 .detail-hero-callout a { display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--cream); text-decoration: none; }
 .detail-hero-callout a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .detail-hero-callout p { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--hero-muted); margin-top: 8px; }
+/* When the image color is light, flip text to dark ink + dark tag pills for contrast. */
+.detail-hero.tint-light { color: var(--ink); --hero-muted: var(--ink); }
+.detail-hero.tint-light .tag { background: var(--ink); color: var(--cream); }
+.detail-hero.tint-light .detail-hero-callout { border-top-color: rgba(31, 30, 30, 0.42); }
+.detail-hero.tint-light .detail-hero-callout a { color: var(--ink); }
 @media (max-width: 760px) {
   .detail-hero-grid { grid-template-columns: 1fr; gap: 30px; padding-top: 60px; padding-bottom: 60px; }
   .detail-hero-callout { max-width: 340px; }
