@@ -497,10 +497,11 @@ section { padding: 96px 0; }
   max-width: var(--prose);
 }
 .article-body blockquote::before {
-  content: '\2733';          /* eight-spoked asterisk mark, in gold */
+  content: '';               /* the hand-drawn blue asterisk mark from the brand */
   display: block;
-  font-style: normal; font-size: 26px; line-height: 1;
-  color: var(--gold);
+  width: 40px; height: 42px;
+  background: url('../assets/site/asterisk-mark.png') no-repeat left center;
+  background-size: contain;
   margin-bottom: 16px;
 }
 .article-body blockquote cite { display: block; margin-top: 14px; font-style: normal; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
