@@ -842,6 +842,9 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .logo-wall .cell { padding: 4px; }
 .logo-wall .cell img { filter: brightness(0); opacity: 0.9; }
 .logo-wall .cell:hover img { filter: brightness(0); opacity: 1; }
+/* detailed/illustrative logos can't be flattened to a solid black silhouette — keep their tones */
+.logo-wall .cell img.logo-detailed,
+.logo-wall .cell:hover img.logo-detailed { filter: grayscale(1); }
 
 /* Footer tweaks */
 .footer-tag { font-size: 20px; }
