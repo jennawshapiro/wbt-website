@@ -107,19 +107,30 @@
      scroll. Uses the CSS `translate` property so it composes with any existing
      transform (e.g. the scribble's scaleX(-1)). Desktop + motion-OK only. */
   var parEls = [].slice.call(document.querySelectorAll(
-    ".hero-stack-gold, .hero-stack-scribble, .about-figure-blue, .about-figure-scribble"
+    ".hero-stack-gold, .hero-stack-scribble, .about-figure-blue, .about-figure-scribble," +
+    " .hero-svc-deco img, .inset-planet"
   ));
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (parEls.length && !parReduce && window.matchMedia("(min-width: 820px)").matches) {
+    parEls.forEach(function (el) {
+      /* top-of-page art anchors to scroll (0 at load, no jump); mid-page art
+         anchors to viewport center (0 when the block is centered). */
+      el._parTop = !!(el.closest(".hero-stack") || el.closest(".hero-svc-deco"));
+      var attr = parseFloat(el.getAttribute("data-parallax"));
+      el._parSpeed = !isNaN(attr) ? attr : (el.className.indexOf("scribble") > -1 ? 0.28 : 0.16);
+    });
     var parTicking = false;
     var parUpdate = function () {
-      var vh = window.innerHeight;
+      var vh = window.innerHeight, sy = window.scrollY;
       parEls.forEach(function (el) {
-        var speed = el.className.indexOf("scribble") > -1 ? 0.18 : 0.10;
-        var r = el.getBoundingClientRect();
-        var fromCenter = (vh / 2) - (r.top + r.height / 2);
-        var d = Math.max(-90, Math.min(90, fromCenter * speed));
-        el.style.translate = "0px " + d.toFixed(1) + "px";
+        var d;
+        if (el._parTop) {
+          d = sy * el._parSpeed;
+        } else {
+          var r = el.getBoundingClientRect();
+          d = ((vh / 2) - (r.top + r.height / 2)) * el._parSpeed;
+        }
+        el.style.translate = "0px " + Math.max(-120, Math.min(120, d)).toFixed(1) + "px";
       });
       parTicking = false;
     };
