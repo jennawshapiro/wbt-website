@@ -147,3 +147,52 @@ directly to them or regenerated.
 ### First-pass prototype
 - Analyzed every page of the live site; built the design system, all 9 pages, the
   content manifest + card-driven index pages, and the case-study/article templates.
+
+---
+
+## Iteration log (design refinement pass)
+
+Work done refining the site toward the live Squarespace look, in roughly this order:
+
+**Homepage**
+- Real hand-drawn annotation marks via vendored **rough-notation** (`js/rough-notation.js`)
+  — an open circle + wobbly underlines that draw in on scroll (stroke weight later
+  lightened to match Squarespace).
+- "What We Do" service icons: removed the white boxes, trimmed transparent margins so the
+  icons sit flush-left, and enlarged the (portrait) leadership moon to match the others.
+- About teaser: shrank copy; swapped the bottom-cropped blue PNG for a full soft-edged
+  **Intentional Blue watercolor spot** (from the Brand Guide); squiggle moved under the
+  photo; hero squiggle draws itself on and sits lower.
+- Impact stat labels bumped up 2px.
+
+**Case studies & articles**
+- Pulled the **full copy 1:1** from the live site for all 12 case studies + 3 articles.
+- Hero redesign: the top block is tinted to each case study's **own image color**
+  (sampled per image), with adaptive dark/light text for contrast; left-aligned with a
+  service callout; tags are light rounded frosted pills.
+- Real hand-drawn **blue asterisk** image above pull-quotes (`assets/site/asterisk-mark.png`).
+- CTA copy "impact-driven" → "purpose-driven".
+
+**Service pages**
+- Hero art retuned to match the live site's size/placement (per page).
+- Centered featured quote (homepage style); pen annotations carried onto the heroes.
+- Leadership: "When It's Right" bullets in a staggered offset-right layout on a plain
+  cream section; "What coaching is / isn't" rebuilt as a **gold inset block with Mars +
+  Neptune planets** on the left; hero art 35% larger and the squiggle 3× and bled off the
+  left edge.
+
+**Motion**
+- **Parallax** on watercolors, squiggles, service hero art, the planets, and media-row
+  columns (text vs. photo drift at different speeds). Top-of-page art anchors to scroll
+  (no load jump); mid-page art anchors to viewport center. Desktop + motion-safe only.
+
+**Tooling / handoff**
+- Moved the page-build tooling into the repo at `build/` (portable scripts + partials +
+  source bodies) so the project is self-contained in git. See `HANDOFF.md`.
+
+**Open / needs owner input**
+- Netlify **production deploys are blocked** (`Forbidden`) — likely an account usage cap;
+  publish from the Netlify dashboard meanwhile (see `HANDOFF.md` §7).
+- Blog posts still use placeholder icon images (no real hero photos provided yet).
+- Two case studies ("Moving From Stress…" and "Individual Coaching…") share identical body
+  copy on the live site — reproduced faithfully; may want distinct copy.

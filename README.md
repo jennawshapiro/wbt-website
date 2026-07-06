@@ -1,14 +1,32 @@
-# 2026 WBT Website — Claude-built rebuild (first-pass prototype)
+# 2026 WBT Website — Claude-built rebuild
 
 A hand-built, brand-consistent rebuild of **workbettertogether.coach**, moving off
 Squarespace and onto plain HTML/CSS/JS you can update by prompting Claude. All the
 content and imagery from the current site has been ported over; the design has been
 tightened to the WBT Brand Guide and made consistent with the **Lead to Win** page.
 
-**This is a first pass to iterate on** — not a finished site. See _Known gaps_ below.
+> ### 📦 Moving this to another computer / picking up the project?
+> **Read [`HANDOFF.md`](HANDOFF.md) first** — setup on a new machine, the build workflow,
+> and deployment (including the current Netlify production-deploy issue and how to publish
+> around it).
 
 > **Progress & decisions:** see [`docs/PROGRESS.md`](docs/PROGRESS.md) for a running log
-> of what's been built, the reasoning behind key design choices, and what's still open.
+> of what's been built and the reasoning behind key design choices.
+
+## Editing the pages (build workflow)
+
+Pages are assembled from a shared header/footer + a per-page body. **Don't hand-edit the
+built `.html` files** (e.g. `index.html`) — edit the matching body in
+[`build/bodies/`](build/bodies) (root pages) or
+[`build/detail-bodies/`](build/detail-bodies) (case studies & articles), then regenerate:
+
+```sh
+bash build/rebuild-root.sh       # rebuild all root pages
+bash build/rebuild-details.sh    # rebuild all case studies + articles
+```
+
+Design lives in `css/styles.css` and behavior in `js/site.js` — edit those directly, no
+rebuild needed. Full details in [`HANDOFF.md`](HANDOFF.md) §5.
 
 ---
 
