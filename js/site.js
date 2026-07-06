@@ -81,9 +81,9 @@
     annoEls.forEach(function (el, i) {
       var type = el.getAttribute("data-anno") === "circle" ? "circle" : "underline";
       var cfg = type === "circle"
-        ? { type: "circle", color: annoColor, strokeWidth: 2.4, padding: [7, 11],
+        ? { type: "circle", color: annoColor, strokeWidth: 1.5, padding: [7, 11],
             iterations: 2, animationDuration: 900 }
-        : { type: "underline", color: annoColor, strokeWidth: 2.6, padding: [2, 1],
+        : { type: "underline", color: annoColor, strokeWidth: 1.7, padding: [2, 1],
             iterations: 2, multiline: true, animationDuration: 650 };
       cfg.seed = 42 + i * 7;                 /* deterministic wobble */
       cfg.animate = !annoReduce;
