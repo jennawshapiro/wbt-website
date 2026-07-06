@@ -164,6 +164,9 @@ section { padding: 96px 0; }
 .section-dark  { background: var(--steady-blue); color: var(--cream); }
 .section-slate { background: var(--clean-slate); color: var(--cream); }
 .section-calm  { background: var(--calm-blue); color: var(--steady-blue); }
+.section-gold  { background: var(--gold); color: var(--ink); }
+.section-gold .eyebrow { color: var(--ink); }
+.section-gold .topic-list li::before { background: var(--ink); }
 .section-tight { padding-top: 0; }
 .section-dark .eyebrow, .section-slate .eyebrow { color: var(--gold); }
 .section-dark a:not(.btn), .section-slate a:not(.btn) { color: var(--calm-blue); }
