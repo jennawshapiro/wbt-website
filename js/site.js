@@ -108,7 +108,7 @@
      transform (e.g. the scribble's scaleX(-1)). Desktop + motion-OK only. */
   var parEls = [].slice.call(document.querySelectorAll(
     ".hero-stack-gold, .hero-stack-scribble, .about-figure-blue, .about-figure-scribble," +
-    " .hero-svc-deco img, .inset-planet"
+    " .hero-svc-deco img, .inset-planet, .media-row > div"
   ));
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (parEls.length && !parReduce && window.matchMedia("(min-width: 820px)").matches) {
@@ -117,7 +117,11 @@
          anchors to viewport center (0 when the block is centered). */
       el._parTop = !!(el.closest(".hero-stack") || el.closest(".hero-svc-deco"));
       var attr = parseFloat(el.getAttribute("data-parallax"));
-      el._parSpeed = !isNaN(attr) ? attr : (el.className.indexOf("scribble") > -1 ? 0.28 : 0.16);
+      el._parSpeed = !isNaN(attr) ? attr
+        : el.classList.contains("media-row-media") ? 0.14   /* photo drifts more */
+        : el.closest(".media-row") ? 0.05                   /* text drifts less  */
+        : el.className.indexOf("scribble") > -1 ? 0.28
+        : 0.16;
     });
     var parTicking = false;
     var parUpdate = function () {
