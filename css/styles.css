@@ -367,6 +367,11 @@ section { padding: 96px 0; }
 .cards-bare .card { background: transparent; border: 0; padding: 0; }
 .cards-bare .card .card-collage { height: 150px; margin-bottom: 20px; }
 .cards-bare .card .card-collage img { display: block; }   /* trimmed icons sit flush-left */
+/* the moon is a portrait crop, so at a fixed height it reads smaller than the
+   landscape bee/lightbulb icons — scale it up, overflowing its box so the
+   headings stay aligned. */
+.cards-bare .card .card-collage.collage-lead { display: flex; align-items: center; overflow: visible; }
+.cards-bare .card .card-collage.collage-lead img { height: 200px; }
 
 /* ── Stats ──────────────────────────────────────────────────────────────── */
 .stat-row { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 8px; }
