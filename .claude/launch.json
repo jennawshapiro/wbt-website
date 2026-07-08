@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "wbt-site",
-      "runtimeExecutable": "python3",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
       "runtimeArgs": [".claude/serve.py"],
       "port": 8231
     }

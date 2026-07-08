@@ -1,12 +1,13 @@
-    <style>:root{--accent:#2531A5;--accent-ink:#F9F8F2;} .nav-dd>button{text-decoration:underline;text-underline-offset:6px;}</style>
+    <style>:root{--accent:#2531A5;--accent-ink:#F9F8F2;} .nav-dd>button{text-decoration:underline;text-underline-offset:6px;} @media (min-width:821px){.hero-svc-inner{max-width:720px;}}</style>
     <!-- ═══ HERO (centered + scattered decorative art) ═══ -->
     <header class="hero-svc">
-      <div class="hero-svc-deco" aria-hidden="true">
-        <img src="assets/site/team-coaching-3-Untitled_Artwork-23.png" alt="" style="right:-5%; top:26%; width:27vw; max-width:490px;">
-        <img class="deco-hide-sm" src="assets/site/team-coaching-2-Untitled_Artwork-24.png" alt="" style="left:-4%; bottom:-4%; width:21vw; max-width:380px;">
-        <img class="deco-hide-sm" src="assets/site/team-coaching-7-Untitled_Artwork-21.png" alt="" style="left:5%; bottom:-8%; width:23vw; max-width:410px;">
-        <img src="assets/site/team-coaching-1-5.png" alt="" style="left:5%; top:33%; width:15vw; max-width:270px;">
-        <img class="deco-hide-sm" src="assets/site/team-coaching-4-6.png" alt="" style="right:2%; bottom:16%; width:7vw; max-width:120px;">
+      <div class="hero-svc-deco deco-team" aria-hidden="true">
+        <!-- watercolors rise on scroll; squiggle drifts fastest; bees drift gently -->
+        <img class="deco-sm sm-water" src="assets/site/team-coaching-3-Untitled_Artwork-23.png" alt="" data-parallax="-0.22" style="right:-32%; top:-8%; width:54vw; max-width:1020px;">
+        <img class="deco-hide-sm" src="assets/site/team-coaching-2-Untitled_Artwork-24.png" alt="" data-parallax="-0.22" style="left:-13%; bottom:-8%; width:45vw; max-width:840px;">
+        <img class="deco-sm sm-scribble" src="assets/site/team-coaching-7-Untitled_Artwork-21.png" alt="" data-parallax="0.32" style="left:calc(-22% - 200px); bottom:-13%; width:50vw; max-width:920px;">
+        <img class="deco-sm sm-focal" src="assets/site/team-coaching-1-5.png" alt="" data-parallax="0.16" style="left:-1%; top:8%; width:30vw; max-width:540px;">
+        <img class="deco-hide-sm" src="assets/site/team-coaching-4-6.png" alt="" data-parallax="0.24" style="right:1%; bottom:12%; width:12vw; max-width:225px;">
       </div>
       <div class="hero-svc-inner">
         <h1>Team Coaching</h1>
@@ -21,8 +22,8 @@
       <div class="wrap">
         <div class="media-row reverse">
           <div>
-            <p class="intro-statement">Team coaching is a structured partnership with a team over time — with the team itself as the client.</p>
-            <p class="lede">Rather than focusing on individual performance, it strengthens how the group works together. Team coaching is valuable when teams feel stuck in familiar dynamics.</p>
+            <p class="intro-statement">Team coaching is a structured <span class="anno" data-anno="underline" style="white-space: normal;">partnership with a team</span> over time — with the team itself as the client.</p>
+            <p class="lede lede-thin">Rather than focusing on individual performance, it strengthens <strong>how the group works together</strong>. Team coaching is valuable when teams feel stuck in familiar dynamics.</p>
             <div style="margin-top: 32px;">
               <div class="eyebrow eyebrow-ochre">What You Can Expect</div>
               <ul class="topic-list">
@@ -40,75 +41,139 @@
       </div>
     </section>
 
-    <!-- ═══ RESEARCH BAND ═══ -->
-    <section class="section-slate">
+    <!-- ═══ RESEARCH BAND (blue inset card with bees + scribble) ═══ -->
+    <section class="section-light">
       <div class="wrap">
-        <div class="eyebrow">The Research</div>
-        <p class="intro-statement" style="color: var(--cream);">Organizations that invest in team coaching see higher employee engagement and retention rates.</p>
-        <p class="lede" style="color: var(--calm-blue); margin-top: 24px;">Companies that integrate coaching into leadership development see a dramatic improvement in team effectiveness and culture.</p>
-        <p class="stat-source">Research from the International Coaching Federation (ICF)</p>
+        <div class="inset-blue">
+          <img class="inset-blue-scribble-bg" src="assets/site/team-coaching-inset-scribble-bg.png" alt="" aria-hidden="true" data-parallax="0.10">
+          <img class="inset-blue-bees" src="assets/site/team-coaching-inset-bees-pair.png" alt="" aria-hidden="true" data-parallax="0.16">
+          <img class="inset-blue-scribble" src="assets/site/team-coaching-inset-scribble.png" alt="" aria-hidden="true" data-parallax="0.24">
+          <div class="inset-blue-body">
+            <div class="eyebrow">The Research</div>
+            <p class="intro-statement">Organizations that invest in team coaching see higher employee engagement and retention rates.</p>
+            <p class="lede lede-thin" style="color: var(--calm-blue); margin-top: 24px;">Companies that integrate coaching into leadership development see a dramatic improvement in team effectiveness and culture.</p>
+            <p class="stat-source">Research from the International Coaching Federation (ICF)</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ═══ WHEN TEAM COACHING IS RIGHT ═══ -->
     <section class="section-light">
       <div class="wrap">
-        <div class="eyebrow eyebrow-ochre">When It's Right</div>
-        <h2 class="section-head">When team coaching is the right next step.</h2>
-        <p class="lede">Team coaching makes sense when the team — not just the leader — is the unit of change. It's often the right next step when capable, committed teams feel stuck in recurring dynamics; when communication, trust, or accountability issues keep resurfacing; or when progress depends on how well people collaborate across the whole group.</p>
-        <p class="lede" style="margin-top: 20px;">If the question you're asking is <em>"How can we work better together?"</em> team coaching is likely the right place to start.</p>
+        <div class="offset-left">
+          <div class="eyebrow eyebrow-ochre">When It's Right For You</div>
+          <h2 class="section-head" style="max-width: var(--prose);">Team coaching makes sense when the team, not just the leader, is the unit of change.</h2>
+          <p class="lede lede-thin">It's the right next step when capable, committed teams feel stuck in recurring dynamics, when communication, trust, or accountability issues keep resurfacing, or when progress depends on how well people collaborate across the whole group.</p>
+        </div>
+        <div class="offset-right">
+          <p class="lede">If the question you're asking is <strong><em>"How can we work better together?"</em></strong> team coaching is likely the right place to start.</p>
+        </div>
       </div>
     </section>
 
     <!-- ═══ 2:2 COACHING ═══ -->
-    <section class="section-paper">
+    <section class="section-light svc-watercolor-sec">
+      <img class="svc-watercolor" src="assets/site/team-coaching-3-Untitled_Artwork-23.png" alt="" aria-hidden="true">
       <div class="wrap">
-        <div class="eyebrow">2:2 Coaching</div>
-        <h2 class="section-head">Coaching for the pairs that shape the team.</h2>
-        <p class="lede">2:2 coaching supports pairs — co-directors, teammates, collaborators, or manager and employee — and focuses on the relationship. Together, we work toward understanding, addressing communication friction, and co-creating healthy working agreements.</p>
-        <p class="lede" style="margin: 28px 0 4px;"><strong>What you can expect:</strong></p>
-        <ul class="topic-list">
-          <li>Real-time feedback and facilitation from both coaches</li>
-          <li>Clear alignment around shared goals and expectations</li>
-          <li>Growth in emotional intelligence and mutual accountability</li>
-          <li>Typical engagement: eight to twelve 90-minute sessions over 6 months</li>
-        </ul>
-        <p class="lede" style="margin-top: 32px;">2:2 coaching is especially valuable when tension, misalignment, or unspoken conflict between two people is affecting decision-making, morale, or team dynamics. By working directly with the relationship, it strengthens both individuals and the system around them.</p>
+        <div class="offset-left">
+          <div class="eyebrow">2:2 Coaching</div>
+          <h2 class="section-head">Two coaches for two teammates.</h2>
+          <p class="lede lede-thin">2:2 coaching supports pairs — co-directors, teammates, collaborators, or manager and employee — and focuses on the relationship. Together, we work toward understanding, addressing communication friction, and co-creating healthy working agreements.</p>
+        </div>
+        <div class="offset-right">
+          <p class="lede" style="margin: 0 0 4px;"><strong>What you can expect:</strong></p>
+          <ul class="topic-list">
+            <li>Real-time feedback and facilitation from both coaches</li>
+            <li>Clear alignment around shared goals and expectations</li>
+            <li>Growth in emotional intelligence and mutual accountability</li>
+            <li>Typical engagement: eight to twelve 90-minute sessions over 6 months</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- ═══ WHAT IT IS ═══ -->
+    <!-- ═══ WHEN 2:2 COACHING IS RIGHT ═══ -->
     <section class="section-light">
       <div class="wrap">
-        <div class="eyebrow eyebrow-ochre">What It Is (and Isn't)</div>
-        <h2 class="section-head">Coaching that happens in the context of real work.</h2>
-        <p class="lede">We pause conversations, name patterns, and invite in-the-moment experiments. Over time, teams build the capacity to notice and adjust themselves. In team coaching, we focus on patterns of interaction:</p>
-        <ul class="topic-list cols" style="margin-top: 24px;">
-          <li>How decisions are made</li>
-          <li>How tension shows up</li>
-          <li>Who speaks and who holds back</li>
-          <li>How responsibility is shared</li>
-        </ul>
+        <div class="offset-left">
+          <div class="eyebrow eyebrow-ochre">When It's Right For You</div>
+          <h2 class="section-head" style="max-width: var(--prose);">2:2 coaching is designed for pairs whose relationship shapes the health of the broader team.</h2>
+          <p class="lede lede-thin" style="margin-top: 20px;">It's especially valuable when tension, misalignment, or unspoken conflict between two people is affecting decision-making, morale, or team dynamics. By working directly with the relationship, 2:2 coaching strengthens both individuals <em>and</em> the system around them.</p>
+        </div>
+        <div class="offset-right">
+          <p class="lede">If the question you're holding is <strong><em>"How do we repair or strengthen this relationship so the team can thrive?"</em></strong> 2:2 coaching may be the right next step.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHAT TEAM + 2:2 COACHING IS (blue inset) ═══ -->
+    <section class="section-light inset-deco-sec">
+      <div class="wrap">
+        <div class="inset-blue">
+          <img class="inset-scribble-behind" src="assets/site/team-coaching-7-Untitled_Artwork-21.png" alt="" aria-hidden="true" data-parallax="0.14">
+          <div class="inset-blue-stagger">
+            <div class="offset-left">
+              <div class="eyebrow">What It Is (and Isn't)</div>
+              <h2 class="section-head">Team coaching happens in the context of real work.</h2>
+              <p class="lede lede-thin">We pause conversations, name patterns, and invite in-the-moment experiments. Over time, teams build the capacity to notice and adjust themselves.</p>
+            </div>
+            <div class="offset-right">
+              <p class="inset-lead"><strong>In team coaching, we focus on patterns of interaction:</strong></p>
+              <ul class="topic-list">
+                <li>How decisions are made</li>
+                <li>How tension shows up</li>
+                <li>Who speaks and who holds back</li>
+                <li>How responsibility is shared</li>
+              </ul>
+              <p class="inset-lead"><strong>Team coaching isn't:</strong></p>
+              <ul class="topic-list">
+                <li>Individual coaching done in a group</li>
+                <li>Therapy or conflict mediation</li>
+                <li>A one-time workshop or offsite</li>
+                <li>A substitute for the team's own ownership</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ═══ TESTIMONIALS ═══ -->
     <section class="section-paper">
       <div class="wrap">
-        <div class="eyebrow">In Their Words</div>
-        <div class="testi-grid">
-          <figure class="testi">
-            <blockquote class="q">"WBT has been a voice of reason and support leading in a large, bureaucratic environment during these challenging times. They coordinated monthly team development conversations to support us in creating stronger collaboration practices, identify areas of growth, and continue to unify us as a collective leadership group."</blockquote>
-            <figcaption class="a"><div class="name">Team Member</div><div class="role">NYCDOE</div></figcaption>
-          </figure>
-          <figure class="testi">
-            <blockquote class="q">"Jenna and Stacy help you and your team to discover your strengths and perform at your highest level. They are extremely perceptive, identifying issues easily and providing tailored and actionable advice. They both bring an uplifting and authentic approach to their coaching."</blockquote>
-            <figcaption class="a"><div class="name">PPFA Policy Team Member</div><div class="role">Planned Parenthood</div></figcaption>
-          </figure>
-          <figure class="testi">
-            <blockquote class="q">"The time we spent together created space to connect as people, beyond just connecting through our work roles. It reminded me that we choose the culture we build, even under pressure, and there's always room to make that culture better so we can make our work better."</blockquote>
-            <figcaption class="a"><div class="name">Team Member</div><div class="role">2025 VA Coordinated Campaign</div></figcaption>
-          </figure>
+        <div class="eyebrow eyebrow-center">In Their Words</div>
+        <div class="quote-carousel" data-quote-carousel>
+          <div class="quote-carousel-viewport">
+            <div class="quote-carousel-track">
+              <figure class="quote-slide">
+                <div class="quote-block">
+                  <div class="mark">&ldquo;</div>
+                  <p class="quote">WBT has been a voice of reason and support leading in a large, bureaucratic environment during these challenging times. They coordinated monthly team development conversations to support us in creating stronger collaboration practices, identify areas of growth, and continue to unify us as a collective leadership group.</p>
+                  <div class="who"><div><div class="name">Team Member</div><div class="role">NYCDOE</div></div></div>
+                </div>
+              </figure>
+              <figure class="quote-slide">
+                <div class="quote-block">
+                  <div class="mark">&ldquo;</div>
+                  <p class="quote">Jenna and Stacy help you and your team to discover your strengths and perform at your highest level. They are extremely perceptive, identifying issues easily and providing tailored and actionable advice. They both bring an uplifting and authentic approach to their coaching.</p>
+                  <div class="who"><div><div class="name">PPFA Policy Team Member</div><div class="role">Planned Parenthood</div></div></div>
+                </div>
+              </figure>
+              <figure class="quote-slide">
+                <div class="quote-block">
+                  <div class="mark">&ldquo;</div>
+                  <p class="quote">The time we spent together created space to connect as people, beyond just connecting through our work roles. It reminded me that we choose the culture we build, even under pressure, and there's always room to make that culture better so we can make our work better.</p>
+                  <div class="who"><div><div class="name">Team Member</div><div class="role">2025 VA Coordinated Campaign</div></div></div>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="quote-carousel-nav">
+            <button class="qc-arrow" type="button" data-dir="-1" aria-label="Previous quote">&lsaquo;</button>
+            <div class="qc-dots" aria-hidden="true"></div>
+            <button class="qc-arrow" type="button" data-dir="1" aria-label="Next quote">&rsaquo;</button>
+          </div>
         </div>
       </div>
     </section>
@@ -118,7 +183,7 @@
       <div class="wrap">
         <div class="eyebrow">Case Studies</div>
         <h2 class="section-head">Team coaching in practice.</h2>
-        <div class="content-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="content-grid content-grid--float" style="grid-template-columns: 1fr 1fr;">
           <a class="content-card" href="case-studies/co-leading-an-organization.html">
             <div class="thumb"><img src="assets/case-studies/co-leading-an-organization.jpg" alt=""></div>
             <div class="body">
@@ -140,7 +205,7 @@
     </section>
 
     <!-- ═══ CTA ═══ -->
-    <section class="cta-band section-dark">
+    <section class="cta-band section-dark cta-blue">
       <div class="wrap">
         <div class="eyebrow" style="color: var(--gold);">Not sure what you need?</div>
         <h2>Let's figure out the right next step.</h2>

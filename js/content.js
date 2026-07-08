@@ -30,21 +30,21 @@ window.WBT_CASE_STUDIES = [
   {
     slug: "moving-from-stress-to-strategy-with-a-team",
     title: "Moving From Stress to Strategy with a Team",
-    excerpt: "Facilitation to move a team out of a reactive stress cycle and back to clear, shared strategy.",
+    excerpt: "Structured sessions to slow down reactive decision-making and rebuild a plan the team could actually execute.",
     tags: ["Facilitation"],
     img: "assets/case-studies/moving-from-stress-to-strategy-with-a-team.jpg"
   },
   {
     slug: "campaign-team-retreat-to-align-at-the-start",
     title: "Campaign Team Retreat to Align at the Start",
-    excerpt: "A kickoff retreat to set norms, routines, and rituals — so a campaign team could move fast together, built on trust.",
+    excerpt: "A kickoff retreat that helped a campaign team set the norms, routines, and trust needed to move fast together.",
     tags: ["Team Coaching", "Campaign Teams"],
     img: "assets/case-studies/campaign-team-retreat-to-align-at-the-start.jpg"
   },
   {
     slug: "individual-coaching-for-each-team-member",
     title: "Individual Coaching for Each Team Member",
-    excerpt: "Pairing team development with 1:1 coaching for every member — so growth happened at both levels at once.",
+    excerpt: "1:1 coaching for every team member, paired with team development, so growth happened at both levels at once.",
     tags: ["Leadership Coaching", "1:1 Coaching"],
     img: "assets/case-studies/individual-coaching-for-each-team-member.jpg"
   },
@@ -58,28 +58,28 @@ window.WBT_CASE_STUDIES = [
   {
     slug: "choosing-the-culture-we-build-on-campaigns",
     title: "Choosing the Culture We Build on Campaigns",
-    excerpt: "Even under pressure, teams choose the culture they build. This is how one campaign chose theirs, on purpose.",
+    excerpt: "Facilitation that helped a campaign team choose its own norms around communication, conflict, and workload before pressure could set them instead.",
     tags: ["Team Coaching", "Campaign Teams"],
     img: "assets/case-studies/choosing-the-culture-we-build-on-campaigns.jpg"
   },
   {
     slug: "developing-endurance-and-agency",
     title: "Developing Endurance and Agency",
-    excerpt: "1:1 coaching to help a leader sort what they could control from what they could influence — and lead from there.",
+    excerpt: "1:1 coaching to help a leader sort what they could control from what they could only influence, then lead from that clarity.",
     tags: ["Leadership Coaching", "1:1 Coaching"],
     img: "assets/case-studies/developing-endurance-and-agency.jpg"
   },
   {
     slug: "building-trust-and-motivation-in-one-day",
     title: "Building Trust and Motivation in One Day",
-    excerpt: "One focused day of facilitation to build the trust and momentum a team needed to accelerate together.",
+    excerpt: "A single intensive session using structured exercises to surface trust gaps and get a team aligned fast, ahead of a critical deadline.",
     tags: ["Facilitation", "Team Retreat"],
     img: "assets/case-studies/building-trust-and-motivation-in-one-day.jpg"
   },
   {
     slug: "leading-together-under-pressure",
     title: "Leading Together Under Pressure",
-    excerpt: "Team coaching for a group stuck in recurring dynamics — naming the patterns, then building the capacity to adjust.",
+    excerpt: "Team coaching that helped a group stuck in recurring dynamics name their patterns and build the capacity to adjust.",
     tags: ["Team Coaching"],
     img: "assets/case-studies/leading-together-under-pressure.jpg"
   },
@@ -93,14 +93,14 @@ window.WBT_CASE_STUDIES = [
   {
     slug: "building-conditions-for-results",
     title: "Building Conditions for Results",
-    excerpt: "A team retreat to define the norms and routines that let a group deliver — without burning out.",
+    excerpt: "A team retreat to define the norms and routines that let a group deliver results without burning out.",
     tags: ["Facilitation", "Team Retreat"],
     img: "assets/case-studies/building-conditions-for-results.jpg"
   },
   {
     slug: "co-leading-an-organization",
     title: "Co-leading an Organization",
-    excerpt: "2:2 coaching for co-directors — building the shared language and working agreements to lead an organization together.",
+    excerpt: "2:2 coaching for co-directors, building the shared language and working agreements needed to lead an organization together.",
     tags: ["Team Coaching", "2:2 Coaching"],
     img: "assets/case-studies/co-leading-an-organization.jpg"
   }
@@ -110,28 +110,28 @@ window.WBT_ARTICLES = [
   {
     slug: "emotional-intelligence-and-leadership",
     title: "Emotional Intelligence and Leadership",
-    excerpt: "How emotional intelligence transforms leadership — helping leaders manage stress, build trust, navigate conflict, and foster high-performing teams.",
+    excerpt: "How emotional intelligence helps leaders manage stress, build trust, navigate conflict, and lead stronger teams.",
     tags: ["Leadership Coaching"],
     author: "Work Better Together",
     date: "3/2/26",
-    img: "assets/site/home-4-Untitled-design-21.png"
+    img: "assets/Collages/WBT-collage-brain-blue.png"
   },
   {
     slug: "in-service-of-the-group-the-facilitators-role",
     title: "In Service of the Group: The Facilitator's Role",
-    excerpt: "Team retreats aren't about fixing problems — they're about creating space for reflection, awareness, and growth.",
+    excerpt: "Team retreats create space for reflection, awareness, and growth instead of just fixing problems.",
     tags: ["Facilitation"],
     author: "Work Better Together",
     date: "2/13/26",
-    img: "assets/site/home-5-Untitled-design-20.png"
+    img: "assets/Collages/WBT-collage-eyeglasses-eye-chart.png"
   },
   {
     slug: "dont-skip-the-convo-about-feelings-at-your-next-team-retreat",
-    title: "Don't Skip the Convo About Feelings at Your Next Team Retreat",
-    excerpt: "Talking about feelings at work isn't a distraction — it's a leadership advantage that builds trust and unlocks collaboration.",
+    title: "Don't Skip the Convo About Feelings at Your Next Retreat",
+    excerpt: "Talking about feelings at work is a leadership advantage that builds trust and unlocks collaboration.",
     tags: ["Facilitation"],
     author: "Work Better Together",
     date: "2/4/26",
-    img: "assets/site/home-6-Untitled-design-39.png"
+    img: "assets/Collages/WBT-collage-megaphone.png"
   }
 ];

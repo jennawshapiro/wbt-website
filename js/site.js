@@ -75,8 +75,10 @@
      A fixed seed keeps the wobble stable across reloads (no random redraw). */
   var annoEls = [].slice.call(document.querySelectorAll("[data-anno]"));
   if (annoEls.length && window.RoughNotation && window.RoughNotation.annotate) {
+    /* pages set their own --accent (leadership=gold, facilitation=ochre, team=blue);
+       annotations follow that so the ink matches the page's colorway. */
     var annoColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--intentional-blue").trim() || "#2531A5";
+      .getPropertyValue("--accent").trim() || "#2531A5";
     var annoReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     annoEls.forEach(function (el, i) {
       var type = el.getAttribute("data-anno") === "circle" ? "circle" : "underline";
@@ -89,7 +91,12 @@
       cfg.animate = !annoReduce;
       el._anno = window.RoughNotation.annotate(el, cfg);
     });
-    var showAnno = function (el) { if (el._anno) el._anno.show(); };
+    var shownAnno = [];
+    var showAnno = function (el) {
+      if (!el._anno) return;
+      el._anno.show();
+      if (shownAnno.indexOf(el) === -1) shownAnno.push(el);
+    };
     if (annoReduce || !("IntersectionObserver" in window)) {
       annoEls.forEach(showAnno);
     } else {
@@ -100,6 +107,18 @@
       }, { threshold: 0.9, rootMargin: "0px 0px -8% 0px" });
       annoEls.forEach(function (el) { aio.observe(el); });
     }
+    /* The underline/circle marks are SVG overlays anchored to the text. While the
+       window is being resized the text reflows but the SVG doesn't, so the mark
+       drifts off the words. Hide the marks on each resize tick, then redraw them
+       (re-anchored to the reflowed text) once resizing has gone idle. */
+    var annoResizeT;
+    window.addEventListener("resize", function () {
+      shownAnno.forEach(function (el) { if (el._anno) el._anno.hide(); });
+      clearTimeout(annoResizeT);
+      annoResizeT = setTimeout(function () {
+        shownAnno.forEach(function (el) { if (el._anno) el._anno.show(); });
+      }, 200);
+    });
   }
 
   /* ── Parallax on watercolor + squiggle decorations ─────────────────────── */
@@ -108,16 +127,18 @@
      transform (e.g. the scribble's scaleX(-1)). Desktop + motion-OK only. */
   var parEls = [].slice.call(document.querySelectorAll(
     ".hero-stack-gold, .hero-stack-scribble, .about-figure-blue, .about-figure-scribble," +
-    " .hero-svc-deco img, .inset-planet, .media-row > div"
+    " .hero-svc-deco img, .hero-band-deco img, .inset-planet, .inset-blue-bees, .inset-blue-scribble, .inset-blue-scribble-bg," +
+    " .media-row > div, .photo-frame img"
   ));
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (parEls.length && !parReduce && window.matchMedia("(min-width: 820px)").matches) {
     parEls.forEach(function (el) {
       /* top-of-page art anchors to scroll (0 at load, no jump); mid-page art
          anchors to viewport center (0 when the block is centered). */
-      el._parTop = !!(el.closest(".hero-stack") || el.closest(".hero-svc-deco"));
+      el._parTop = !!(el.closest(".hero-stack") || el.closest(".hero-svc-deco") || el.closest(".hero-band-deco"));
       var attr = parseFloat(el.getAttribute("data-parallax"));
       el._parSpeed = !isNaN(attr) ? attr
+        : el.closest(".photo-frame") ? 0.14                  /* photo drifts within its own frame */
         : el.classList.contains("media-row-media") ? 0.14   /* photo drifts more */
         : el.closest(".media-row") ? 0.05                   /* text drifts less  */
         : el.className.indexOf("scribble") > -1 ? 0.28
@@ -126,7 +147,15 @@
     var parTicking = false;
     var parUpdate = function () {
       var vh = window.innerHeight, sy = window.scrollY;
+      /* .media-row collapses to a single stacked column at <=940px (see CSS);
+         its parallax must stop there too, or the photo drifts up into the text
+         block stacked above it. */
+      var mediaRowStacked = window.innerWidth <= 940;
       parEls.forEach(function (el) {
+        if (mediaRowStacked && el.closest(".media-row")) {
+          el.style.translate = "";
+          return;
+        }
         var d;
         if (el._parTop) {
           d = sy * el._parSpeed;
@@ -134,7 +163,7 @@
           var r = el.getBoundingClientRect();
           d = ((vh / 2) - (r.top + r.height / 2)) * el._parSpeed;
         }
-        el.style.translate = "0px " + Math.max(-120, Math.min(120, d)).toFixed(1) + "px";
+        el.style.translate = "0px " + Math.max(-170, Math.min(170, d)).toFixed(1) + "px";
       });
       parTicking = false;
     };

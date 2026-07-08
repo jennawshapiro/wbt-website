@@ -16,8 +16,10 @@
         </div>
         <div class="footer-signup">
           <label for="footerEmail">Sign up with your email address to receive insights from us.</label>
-          <form class="footer-form" onsubmit="return false;">
-            <input id="footerEmail" type="email" placeholder="Email address" aria-label="Email address">
+          <!-- Mailchimp embedded form (audience: coach.us10, list id da835d4eac) -->
+          <form class="footer-form" action="https://coach.us10.list-manage.com/subscribe/post?u=e62622c6d476dbd33dc2d23d2&amp;id=da835d4eac&amp;f_id=009b4ee4f0" method="post" target="_blank" rel="noopener" novalidate>
+            <input id="footerEmail" type="email" name="EMAIL" placeholder="Email address" aria-label="Email address" required>
+            <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_e62622c6d476dbd33dc2d23d2_da835d4eac" tabindex="-1" value=""></div>
             <button class="btn btn-on-dark" type="submit">Sign Up</button>
           </form>
         </div>

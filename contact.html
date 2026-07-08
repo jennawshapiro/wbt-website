@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Let's Get to Work — Work Better Together</title>
   <meta name="description" content="Reach out to Work Better Together.">
+  <link rel="canonical" href="https://www.workbettertogether.coach/contact">
+  <meta property="og:site_name" content="Work Better Together">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Let's Get to Work — Work Better Together">
+  <meta property="og:description" content="Reach out to Work Better Together.">
+  <meta property="og:url" content="https://www.workbettertogether.coach/contact">
+  <meta property="og:image" content="https://www.workbettertogether.coach/assets/site/og-share-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Let's Get to Work — Work Better Together">
+  <meta name="twitter:description" content="Reach out to Work Better Together.">
+  <meta name="twitter:image" content="https://www.workbettertogether.coach/assets/site/og-share-image.png">
   <link rel="icon" type="image/svg+xml" href="assets/Logos/WBT-20260505-Favicon-Intentional-Blue.svg">
   <link rel="apple-touch-icon" href="assets/Logos/apple-touch-icon.png">
   <link rel="stylesheet" href="css/styles.css">
@@ -32,7 +45,7 @@
           </ul>
         </li>
         <li><a href="our-work.html">Our Work</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html">Insights</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a class="nav-cta" href="contact.html">Let's Get to Work</a></li>
@@ -41,32 +54,71 @@
   </header>
 
   <main>
-    <!-- ═══ HERO ═══ -->
-    <header class="page-hero">
+    <!-- ═══ HERO (cream) ═══ -->
+    <header class="section-light" style="padding: 60px 0 4px;">
       <div class="wrap">
         <div class="eyebrow">Let's Get to Work</div>
-        <h1>Let's get to work.</h1>
-        <p class="lede" style="color: var(--calm-blue); max-width: 640px;">Interested in learning more about what we do, how we work, and who we are? Reach out, and we'll look forward to connecting via phone or video to answer your questions and talk through your needs.</p>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(38px, 6vw, 60px); line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); max-width: 18ch;">Let's get to work.</h1>
+        <p class="lede" style="max-width: 640px; margin-top: 16px;">Interested in learning more about what we do, how we work, and who we are? Reach out, and we'll look forward to connecting via phone or video to answer your questions and talk through your needs.</p>
       </div>
     </header>
 
-    <!-- ═══ WAYS TO CONNECT ═══ -->
-    <section class="section-light">
+    <!-- ═══ CONTACT FORM ═══ -->
+    <section class="section-light" style="padding-top: 28px;">
       <div class="wrap">
-        <div class="cards cards-3">
+        <div class="eyebrow eyebrow-ochre">Send us a note</div>
+        <h2 class="section-head" style="margin-bottom: 28px;">Tell us what's on your mind.</h2>
+        <p class="form-success" id="cf-success" hidden style="background: rgba(37,49,165,0.08); border-left: 3px solid var(--intentional-blue); padding: 16px 20px; margin-bottom: 24px; font-family: var(--font-body); color: var(--ink);">Thanks — your message is on its way. We'll be in touch soon.</p>
+        <!-- Netlify Forms (hosted on JENNA's Netlify account). Netlify captures submissions
+             on deploy; set the notification email (hello@workbettertogether.coach) under
+             Jenna's Netlify → Forms → form "contact" → notifications. -->
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact.html?sent=1" aria-label="Contact form">
+          <input type="hidden" name="form-name" value="contact">
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+          <div class="contact-form-grid">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-org">Organization <span class="optional">(optional)</span></label>
+            <input id="cf-org" name="organization" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="cf-message">How can we help?</label>
+            <textarea id="cf-message" name="message" rows="6" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </form>
+        <script>if(location.search.indexOf('sent=1')>-1){var _s=document.getElementById('cf-success');if(_s){_s.hidden=false;}}</script>
+      </div>
+    </section>
+
+    <!-- ═══ WAYS TO CONNECT ═══ -->
+    <section class="section-light" style="padding-top: 40px;">
+      <div class="wrap">
+        <div class="cards cards-3 cards-bare">
           <article class="card">
+            <div class="card-collage collage-lead"><img src="assets/site/icons/icon-phone.png" alt="" aria-hidden="true"></div>
             <div class="eyebrow eyebrow-ochre">Step One</div>
             <h3>Book a chemistry call</h3>
             <p>The best place to start. A 30-minute call with Jenna and Stacy to explore your goals, your context, and whether we're the right fit.</p>
             <div class="card-foot"><a class="btn btn-primary" href="https://calendly.com/d/ckw6-vy8-3fy/30-minutes-with-jenna-stacy" target="_blank" rel="noopener">Book a call</a></div>
           </article>
           <article class="card">
+            <div class="card-collage collage-lead"><img src="assets/site/icons/icon-compass.png" alt="" aria-hidden="true"></div>
             <div class="eyebrow eyebrow-ochre">Not sure yet?</div>
             <h3>Take the survey</h3>
             <p>Our Healthy Leadership Survey helps you reflect on readiness, goals, and alignment — and points you toward the service that fits.</p>
-            <div class="card-foot"><a class="btn btn-secondary" href="https://form.typeform.com/to/ZA6NYF5k" target="_blank" rel="noopener">Take the survey</a></div>
+            <div class="card-foot"><a class="btn btn-primary" href="https://form.typeform.com/to/ZA6NYF5k" target="_blank" rel="noopener">Take the survey</a></div>
           </article>
           <article class="card">
+            <div class="card-collage collage-lead"><img src="assets/site/icons/icon-armillary.png" alt="" aria-hidden="true"></div>
             <div class="eyebrow eyebrow-ochre">Prefer email?</div>
             <h3>Reach out directly</h3>
             <p>Drop us a line and we'll get back to you.</p>
@@ -85,8 +137,10 @@
         <div class="eyebrow" style="color: var(--gold);">Stay connected</div>
         <h2>Insights from us, now and then.</h2>
         <p class="sub">Sign up with your email address to receive insights from us. No noise — just useful thinking on leadership and teams.</p>
-        <form class="footer-form" style="max-width: 440px; margin: 0 auto; justify-content: center;" onsubmit="return false;">
-          <input type="email" placeholder="Email address" aria-label="Email address">
+        <!-- Mailchimp embedded form (audience: coach.us10, list id da835d4eac) -->
+        <form class="footer-form" style="max-width: 440px; margin: 0 auto; justify-content: center;" action="https://coach.us10.list-manage.com/subscribe/post?u=e62622c6d476dbd33dc2d23d2&amp;id=da835d4eac&amp;f_id=009b4ee4f0" method="post" target="_blank" rel="noopener" novalidate>
+          <input type="email" name="EMAIL" placeholder="Email address" aria-label="Email address" required>
+          <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_e62622c6d476dbd33dc2d23d2_da835d4eac" tabindex="-1" value=""></div>
           <button class="btn btn-on-dark" type="submit">Sign Up</button>
         </form>
       </div>
@@ -111,8 +165,10 @@
         </div>
         <div class="footer-signup">
           <label for="footerEmail">Sign up with your email address to receive insights from us.</label>
-          <form class="footer-form" onsubmit="return false;">
-            <input id="footerEmail" type="email" placeholder="Email address" aria-label="Email address">
+          <!-- Mailchimp embedded form (audience: coach.us10, list id da835d4eac) -->
+          <form class="footer-form" action="https://coach.us10.list-manage.com/subscribe/post?u=e62622c6d476dbd33dc2d23d2&amp;id=da835d4eac&amp;f_id=009b4ee4f0" method="post" target="_blank" rel="noopener" novalidate>
+            <input id="footerEmail" type="email" name="EMAIL" placeholder="Email address" aria-label="Email address" required>
+            <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_e62622c6d476dbd33dc2d23d2_da835d4eac" tabindex="-1" value=""></div>
             <button class="btn btn-on-dark" type="submit">Sign Up</button>
           </form>
         </div>

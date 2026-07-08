@@ -8,6 +8,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=ROOT, **kwargs)
 
+    def end_headers(self):
+        # dev server: never cache, so edits to css/js/html show on every reload
+        self.send_header("Cache-Control", "no-store, max-age=0")
+        super().end_headers()
+
 with socketserver.TCPServer(("127.0.0.1", PORT), Handler) as httpd:
     print(f"serving {ROOT} on {PORT}")
     httpd.serve_forever()
