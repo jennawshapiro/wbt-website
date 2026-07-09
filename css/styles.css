@@ -115,6 +115,10 @@ h3.sub-head {
 }
 .lede + .lede { margin-top: 20px; }
 @media (max-width: 860px) { .about-intro .lede { font-size: 17px; } }
+/* Any headline-support text set to 2/3 width on desktop should span full width on mobile */
+@media (max-width: 860px) { [style*="max-width: 66%"] { max-width: 100% !important; } }
+/* Legal-page (Privacy/Terms) body copy: same mobile serif scale-down as About */
+@media (max-width: 860px) { .article-body.legal-copy p, .article-body.legal-copy li { font-size: 17px; } }
 
 /* Supporting text directly under a page headline = League Spartan, per brand */
 .headline-support {
@@ -778,7 +782,7 @@ section { padding: 96px 0; }
 .joy-deco-scribble { left: calc(100% - 200px); top: calc(100% - 90px); width: 630px; opacity: 0.7; z-index: 2; }
 @media (max-width: 860px) {
   .joy-grid { grid-template-columns: 1fr; gap: 64px; }
-  .joy-section { padding-bottom: 192px; }
+  .joy-section { padding-top: 96px; padding-bottom: 192px; }
 }
 
 /* Bio-page photo collage — candid photos woven into a masonry, no frames or
