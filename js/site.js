@@ -6,6 +6,27 @@
 (function () {
   "use strict";
 
+  /* ── No orphaned last words ──────────────────────────────────────────────
+     Glue the last two words of every paragraph/list item with a non-breaking
+     space so the final line of a text block never ends with a single
+     stranded word, at any viewport width. */
+  var mainEl = document.querySelector("main");
+  if (mainEl) {
+    [].forEach.call(mainEl.querySelectorAll("p, li"), function (el) {
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      var nodes = [], n;
+      while ((n = walker.nextNode())) nodes.push(n);
+      for (var i = nodes.length - 1; i >= 0; i--) {
+        var text = nodes[i].nodeValue;
+        var idx = text.lastIndexOf(" ");
+        if (idx > -1 && text.slice(idx + 1).trim()) {
+          nodes[i].nodeValue = text.slice(0, idx) + " " + text.slice(idx + 1);
+          break;
+        }
+      }
+    });
+  }
+
   /* ── Mobile navigation ─────────────────────────────────────────────────── */
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
