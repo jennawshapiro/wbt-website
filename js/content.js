@@ -118,7 +118,7 @@ window.WBT_ARTICLES = [
   },
   {
     slug: "in-service-of-the-group-the-facilitators-role",
-    title: "In Service of the Group: The Facilitator's Role",
+    title: "In Service of the Group: The Facilitator’s Role",
     excerpt: "Team retreats create space for reflection, awareness, and growth instead of just fixing problems.",
     tags: ["Facilitation"],
     author: "Work Better Together",
@@ -127,7 +127,7 @@ window.WBT_ARTICLES = [
   },
   {
     slug: "dont-skip-the-convo-about-feelings-at-your-next-team-retreat",
-    title: "Don't Skip the Convo About Feelings at Your Next Retreat",
+    title: "Don’t Skip the Convo About Feelings at Your Next Retreat",
     excerpt: "Talking about feelings at work is a leadership advantage that builds trust and unlocks collaboration.",
     tags: ["Facilitation"],
     author: "Work Better Together",
