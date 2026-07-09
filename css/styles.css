@@ -1116,12 +1116,12 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .hero-photo h1 { color: var(--ink); font-size: clamp(40px, 6.2vw, 68px); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 18px; }
 .hero-photo-frame { max-width: 1680px; margin: 48px auto 0; padding: 0 clamp(40px, 6vw, 120px); }
 .hero-photo-img { position: relative; overflow: hidden; aspect-ratio: 2500 / 1746; }
-.hero-photo-img img { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; object-position: 50% 50%; display: block; }
+.hero-photo-img img { position: absolute; top: -4%; left: -4%; width: 108%; max-width: none; height: 108%; object-fit: cover; object-position: 50% 50%; display: block; }
 @media (max-width: 640px) { .hero-photo-frame { padding: 0 20px; } }
 /* Generic in-frame parallax wrapper: crops a slightly oversized image so it can
    drift within its own box on scroll without revealing an edge. */
 .frame-parallax { position: relative; overflow: hidden; border-radius: 4px; }
-.frame-parallax img { position: absolute; inset: -5%; width: 110%; height: 110%; object-fit: cover; }
+.frame-parallax img { position: absolute; top: -5%; left: -5%; width: 110%; max-width: none; height: 110%; object-fit: cover; }
 
 /* SIMPLE colored header band (our-work / blog / faq / contact) — kept distinct */
 .hero-band { position: relative; z-index: 2; overflow-x: clip; overflow-y: visible; padding: 76px 0 80px; }
