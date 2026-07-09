@@ -110,9 +110,15 @@
     /* The underline/circle marks are SVG overlays anchored to the text. While the
        window is being resized the text reflows but the SVG doesn't, so the mark
        drifts off the words. Hide the marks on each resize tick, then redraw them
-       (re-anchored to the reflowed text) once resizing has gone idle. */
+       (re-anchored to the reflowed text) once resizing has gone idle.
+       Only react to actual WIDTH changes: mobile Safari fires "resize" on every
+       scroll as its address bar shows/hides (a height-only change), which was
+       re-triggering the hide/show and making the marks visibly re-animate. */
     var annoResizeT;
+    var lastAnnoWidth = window.innerWidth;
     window.addEventListener("resize", function () {
+      if (window.innerWidth === lastAnnoWidth) return;
+      lastAnnoWidth = window.innerWidth;
       shownAnno.forEach(function (el) { if (el._anno) el._anno.hide(); });
       clearTimeout(annoResizeT);
       annoResizeT = setTimeout(function () {
