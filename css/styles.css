@@ -755,7 +755,7 @@ section { padding: 96px 0; }
 
 /* "We center joy" statement — sans-serif display type beside the founders
    photo, with a watercolor spot bleeding off the margin. */
-.joy-section { position: relative; overflow-x: clip; overflow-y: visible; }
+.joy-section { position: relative; overflow-x: clip; overflow-y: visible; padding-top: 192px; }
 .joy-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 64px); align-items: center; position: relative; z-index: 1; }
 .joy-statement { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3vw, 38px); line-height: 1.16; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
 .joy-photo { position: relative; }
@@ -765,7 +765,7 @@ section { padding: 96px 0; }
 .joy-deco-scribble { left: calc(100% - 200px); top: calc(100% - 90px); width: 630px; opacity: 0.7; z-index: 2; }
 @media (max-width: 860px) {
   .joy-grid { grid-template-columns: 1fr; }
-  .joy-section { padding-top: 192px; padding-bottom: 192px; }
+  .joy-section { padding-bottom: 192px; }
 }
 
 /* Bio-page photo collage — candid photos woven into a masonry, no frames or
@@ -1133,6 +1133,8 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
   .hero-art { max-width: 360px; margin: 8px 0 0; }
   .media-row, .media-row.reverse { grid-template-columns: 1fr; gap: 24px; }
   .media-row.reverse .media-row-media { order: 0; }
+  /* Bio pages: name/meta/lede reads before the portrait once stacked. */
+  .bio-hero-row .media-row-media { order: 1; }
   /* center the duotone photo once the row stacks */
   .photo-frame { margin-left: auto; margin-right: auto; }
   .hero-band-deco { display: none; }
@@ -1180,7 +1182,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 .hero-stack { position: relative; overflow: hidden; background: var(--bg); }
 .hero-stack-deco { position: absolute; z-index: 0; pointer-events: none; display: block; }
 .hero-stack-gold { left: -70px; top: calc(40% - 80px); width: clamp(360px, 40vw, 600px); }  /* +20%, up 80px */
-.hero-stack-scribble { right: -340px; top: calc(42% - 230px); width: clamp(528px, 60vw, 1128px); transform: scaleX(-1); } /* down 70px from before — behind image corner */
+.hero-stack-scribble { right: -460px; top: calc(42% - 230px); width: clamp(528px, 60vw, 1128px); transform: scaleX(-1); } /* moved 120px further right to clear the statement text on scroll */
 /* draw the hero scribble on, once, on load */
 @keyframes scribble-draw { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
 html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s both; }
