@@ -263,6 +263,52 @@
     }
   }
 
+  /* ── Client logo-wall carousel (mobile swipe, same nav as the quote carousel) ── */
+  var logoWall = document.querySelector(".logo-wall");
+  var lwNav = document.querySelector("[data-logo-carousel-nav]");
+  if (logoWall && lwNav) {
+    var lwPages = [].slice.call(logoWall.querySelectorAll(".logo-wall-page"));
+    var lwArrows = [].slice.call(lwNav.querySelectorAll(".qc-arrow"));
+    var lwDotsWrap = lwNav.querySelector(".qc-dots");
+    if (lwPages.length < 2) {
+      lwNav.style.display = "none";
+    } else {
+      var lwIndex = 0, lwDots = [];
+      lwPages.forEach(function (_, n) {
+        var b = document.createElement("button");
+        b.className = "qc-dot"; b.type = "button";
+        b.setAttribute("aria-label", "Go to logo set " + (n + 1));
+        b.addEventListener("click", function () { lwGo(n); });
+        lwDotsWrap.appendChild(b); lwDots.push(b);
+      });
+      function lwSetActive(n) {
+        lwIndex = n;
+        lwDots.forEach(function (d, k) { d.setAttribute("aria-current", k === lwIndex ? "true" : "false"); });
+      }
+      function lwGo(n) {
+        n = (n + lwPages.length) % lwPages.length;
+        logoWall.scrollTo({ left: lwPages[n].offsetLeft, behavior: "smooth" });
+        lwSetActive(n);
+      }
+      lwArrows.forEach(function (btn) {
+        btn.addEventListener("click", function () { lwGo(lwIndex + parseInt(btn.dataset.dir, 10)); });
+      });
+      var lwScrollTimer;
+      logoWall.addEventListener("scroll", function () {
+        clearTimeout(lwScrollTimer);
+        lwScrollTimer = setTimeout(function () {
+          var closest = 0, closestDist = Infinity;
+          lwPages.forEach(function (p, n) {
+            var dist = Math.abs(p.offsetLeft - logoWall.scrollLeft);
+            if (dist < closestDist) { closestDist = dist; closest = n; }
+          });
+          lwSetActive(closest);
+        }, 80);
+      });
+      lwSetActive(0);
+    }
+  }
+
   /* ── Current year in footer ────────────────────────────────────────────── */
   [].forEach.call(document.querySelectorAll("[data-year]"), function (el) {
     el.textContent = new Date().getFullYear();
