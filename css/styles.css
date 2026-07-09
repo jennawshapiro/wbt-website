@@ -1393,7 +1393,7 @@ html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier
   .hero-home2-frame { padding: 0 20px; }
   .hero-home2-title {
     position: static; transform: none; width: auto; text-align: center;
-    color: var(--steady-blue); text-shadow: none;
+    color: var(--ink); text-shadow: none;
     font-size: clamp(30px, 8.5vw, 42px); line-height: 1.03; margin-top: 39px;
   }
   .hero-stack-gold { width: 175px; left: -34px; bottom: auto; top: calc(16px + (100vw - 40px) * 0.4375 - 100px); }
