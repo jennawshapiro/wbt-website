@@ -789,6 +789,9 @@ section { padding: 96px 0; }
 /* Bio-page photo collage — candid photos woven into a masonry, no frames or
    rounded corners, with watercolor spots + a scribble bleeding through. */
 .bio-collage-section { overflow-x: clip; overflow-y: visible; background: var(--bg); padding-bottom: 24px; }
+@media (min-width: 861px) {
+  .bio-collage-section { padding-top: 50px; padding-bottom: 50px; }
+}
 /* tighter vertical rhythm around the bio collage + quote */
 .bio-pb-half { padding-bottom: 20px; }
 .bio-pb-sm { padding-bottom: 24px; }
