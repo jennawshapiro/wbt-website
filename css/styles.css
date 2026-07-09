@@ -45,6 +45,14 @@
 /* ── Reset ──────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+.skip-link {
+  position: absolute; top: -48px; left: 12px; z-index: 1000;
+  background: var(--intentional-blue); color: var(--cream);
+  font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em;
+  padding: 12px 20px; border-radius: 4px; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 12px; }
 body {
   background: var(--bg);
   color: var(--ink);
@@ -106,6 +114,7 @@ h3.sub-head {
   color: inherit;   /* follow the surrounding section (light = ink, dark = cream) */
 }
 .lede + .lede { margin-top: 20px; }
+@media (max-width: 860px) { .about-intro .lede { font-size: 17px; } }
 
 /* Supporting text directly under a page headline = League Spartan, per brand */
 .headline-support {
@@ -188,8 +197,8 @@ section { padding: 96px 0; }
 .inset-gold-body .offset-right { margin-top: 24px; }
 .inset-gold-body .offset-right .inset-lead:first-child { margin-top: 0; }
 .inset-planet { position: absolute; z-index: 2; left: 0; pointer-events: none; }
-.inset-planet-mars    { width: clamp(140px, 15vw, 210px); left: -13%; top: calc(12% + 430px); }
-.inset-planet-neptune { width: clamp(56px, 6vw, 92px);  left: -8%; top: calc(12% + 220px); }
+.inset-planet-mars    { width: clamp(140px, 15vw, 210px); left: -10.5%; top: calc(12% + 430px); }
+.inset-planet-neptune { width: clamp(56px, 6vw, 92px);  left: -4.3%; top: calc(12% + 220px); }
 @media (max-width: 820px) {
   .inset-gold-body { margin-left: 0; }
   .inset-planet { display: none; }
@@ -885,7 +894,7 @@ section { padding: 96px 0; }
 .faq-deco-gold { left: -220px; top: 40px; width: 480px; opacity: 0.8; }
 .faq-deco-blue { right: -180px; top: 460px; width: 360px; opacity: 0.55; }
 .faq-deco-scribble { right: -300px; bottom: -60px; width: 560px; opacity: 0.75; transform: scaleX(-1); }
-.faq-list { position: relative; z-index: 1; max-width: 820px; margin: 20px auto 0; }
+.faq-list { position: relative; z-index: 1; max-width: 820px; margin: 20px auto 0; padding: 0 40px; }
 @media (max-width: 900px) {
   .faq-deco-gold { width: 320px; left: -160px; }
   .faq-deco-blue { width: 240px; right: -120px; }
@@ -1001,6 +1010,11 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
 @media (max-width: 820px) {
   section { padding: 72px 0; }
   .cards, .cards-3 { grid-template-columns: 1fr; }
+  .cards-bare .card { text-align: center; }
+  .cards-bare .card .card-collage { margin-left: auto; margin-right: auto; }
+  .cards-bare .card .card-collage img { margin: 0 auto; }
+  .cards-bare .card .card-collage.collage-lead { justify-content: center; }
+  .cards-bare .card .card-foot { display: flex; justify-content: center; }
 }
 /* Mobile nav — switches to the hamburger well above 820px (1000px) because the
    full desktop nav (logo + 5 links + dropdown + CTA pill) starts overlapping
@@ -1030,7 +1044,7 @@ html.reveal-on .reveal.in-view { opacity: 1; transform: none; }
   .nav-dd-menu a .d { display: none; }
 }
 @media (max-width: 620px) {
-  .wrap, .nav, .prose-wrap { padding-left: 24px; padding-right: 24px; }
+  .wrap, .nav, .prose-wrap, .faq-list { padding-left: 24px; padding-right: 24px; }
   .content-grid, .cards-3, .testi-grid { grid-template-columns: 1fr; }
   .logo-wall { grid-template-columns: repeat(3, 1fr); }
   .topic-list.cols { grid-template-columns: 1fr; }
@@ -1237,7 +1251,8 @@ html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier
 /* hand-drawn annotations — drawn at runtime by rough-notation (js/rough-notation.js),
    the same sketch-style engine behind Squarespace's text-highlight marks: an open
    circle around a phrase and wobbly underlines that draw in on scroll. */
-.anno { position: relative; white-space: nowrap; }
+.anno { position: relative; }
+.anno[data-anno="circle"] { white-space: nowrap; }
 /* Anchor the rough-notation SVG overlays to their own paragraph (a positioned
    container that always contains the text) so the marks stay locked to the
    words through scroll, font-load reflow, and resize redraws instead of
@@ -1260,7 +1275,6 @@ html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier
 
 @media (max-width: 620px) {
   .statement-gold, .statement-scribble { opacity: 0.65; }
-  .anno[data-anno="underline"] { white-space: normal; }  /* underlines may wrap; keep circled phrase on one line */
 }
 
 /* ═══ Featured-quote carousel (home testimonials) ═══ */

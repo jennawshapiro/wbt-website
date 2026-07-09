@@ -36,11 +36,12 @@ cat <<HEAD
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
 HEAD
 cat "$PARTS/header.html"
 echo ""
-echo "  <main>"
+echo "  <main id=\"main\">"
 cat "$BODY"
 echo "  </main>"
 echo ""

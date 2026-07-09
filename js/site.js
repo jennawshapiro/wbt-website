@@ -131,7 +131,14 @@
     " .media-row > div, .photo-frame img, [data-parallax]"
   ));
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (parEls.length && !parReduce && window.matchMedia("(min-width: 820px)").matches) {
+  var parDesktopOnly = !window.matchMedia("(min-width: 820px)").matches;
+  /* Below 820px most decorative parallax is disabled (elements are often
+     hidden or stacked), but the bio-page photo collages keep their layout
+     at every width, so let their layered photos drift on mobile too. */
+  if (parDesktopOnly) {
+    parEls = parEls.filter(function (el) { return el.closest(".bio-collage"); });
+  }
+  if (parEls.length && !parReduce) {
     parEls.forEach(function (el) {
       /* top-of-page art anchors to scroll (0 at load, no jump); mid-page art
          anchors to viewport center (0 when the block is centered). */
