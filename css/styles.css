@@ -788,7 +788,7 @@ section { padding: 96px 0; }
 
 /* Bio-page photo collage — candid photos woven into a masonry, no frames or
    rounded corners, with watercolor spots + a scribble bleeding through. */
-.bio-collage-section { overflow-x: clip; background: var(--bg); padding-bottom: 24px; }
+.bio-collage-section { overflow-x: clip; overflow-y: visible; background: var(--bg); padding-bottom: 24px; }
 /* tighter vertical rhythm around the bio collage + quote */
 .bio-pb-half { padding-bottom: 20px; }
 .bio-pb-sm { padding-bottom: 24px; }
@@ -818,9 +818,10 @@ section { padding: 96px 0; }
      width and center it so the composition simply crops off both sides. */
   .bio-collage { width: 760px; height: 560px; left: 50%; transform: translateX(-38%); }
   .bio-collage-deco.spot-a { left: -70px; top: -10px; width: 300px; }
-  .bio-collage-deco.spot-b { right: -70px; bottom: -10px; width: 300px; }
+  .bio-collage-deco.spot-b { left: 60px; right: auto; top: auto; bottom: -140px; width: 460px; z-index: 0; }
   .bio-collage-deco.scribble { right: 2%; top: 40%; width: 320px; }
-  .bio-collage-section { padding-bottom: 12px; }
+  .bio-collage-section { padding-bottom: 140px; }
+  .bio-collage .cols img.bio-photo-shrink-sm { width: 21%; }
 }
 
 .cs-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 44px 56px; align-items: start; margin: 64px auto 0; }
