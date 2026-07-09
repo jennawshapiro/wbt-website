@@ -44,8 +44,8 @@
     ".eyebrow, .section-head, .sub-head, .intro-statement, .lede, .headline-support," +
     " .card, .stat, .quote-block, .testi, .content-card, .pill-list, .topic-list," +
     " .cta-band h2, .cta-buttons, .logo-wall, .faq-item," +
-    " .hero-home h1, .hero-home-photo, .hero-service h1, .hero-service .headline-support," +
-    " .hero-photo h1, .hero-photo-img, .media-row, .compare .col, .hero-art"
+    " .hero-home h1, .hero-home-photo, .hero-home2-photo, .hero-service h1, .hero-service .headline-support," +
+    " .hero-photo h1, .hero-photo-img, .media-row, .compare .col, .hero-art, .photo-frame"
   )).filter(function (el) { return !el.closest("[data-quote-carousel]"); });
   if (revealEls.length) {
     var counts = new Map();
