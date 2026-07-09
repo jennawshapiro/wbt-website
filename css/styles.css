@@ -1389,17 +1389,17 @@ html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier
 }
 @media (max-width: 640px) {
   /* Hero: headline drops below the triptych, dark on cream (legible on a narrow strip) */
-  .hero-home2 { padding: 16px 0 26px; }
+  .hero-home2 { padding: 16px 0 17px; }
   .hero-home2-frame { padding: 0 20px; }
   .hero-home2-title {
     position: static; transform: none; width: auto; text-align: center;
     color: var(--steady-blue); text-shadow: none;
-    font-size: clamp(30px, 8.5vw, 42px); line-height: 1.03; margin-top: 18px;
+    font-size: clamp(30px, 8.5vw, 42px); line-height: 1.03; margin-top: 39px;
   }
   .hero-stack-gold { width: 175px; left: -34px; bottom: auto; top: calc(16px + (100vw - 40px) * 0.4375 - 100px); }
   .hero-stack-scribble { width: 220px; right: -84px; bottom: auto; top: calc(16px + (100vw - 40px) * 0.4375 - 90px); }
 
-  .statement-band { padding: 34px 0 48px; }
+  .statement-band { padding: 22px 0 48px; }
   .statement { font-size: 20px; line-height: 1.5; }
   .statement-cta { margin-top: 30px; }
 
