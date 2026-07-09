@@ -748,7 +748,7 @@ section { padding: 96px 0; }
    it running off the edge, and a "listening" collage on top. */
 .process-section { position: relative; overflow-x: clip; overflow-y: visible; z-index: 1; }
 .process-deco { position: absolute; pointer-events: none; display: block; }
-.process-deco-gold { right: calc(-13vw - 250px); bottom: -150px; width: min(640px, 60vw); z-index: 2; opacity: 0.92; }
+.process-deco-gold { right: calc(-13vw - 200px); bottom: -150px; width: min(640px, 60vw); z-index: 2; opacity: 0.92; }
 .process-deco-scribble { right: -6vw; bottom: -110px; width: min(520px, 52vw); z-index: 3; opacity: 0.68; transform: rotate(-6deg); }
 .process-listen { right: -2vw; bottom: 180px; width: clamp(176px, 18.75vw, 246px); z-index: 4; }
 @media (max-width: 860px) { .process-deco-gold { width: 70vw; right: -18vw; bottom: -90px; } .process-listen { display: none; } }
