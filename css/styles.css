@@ -818,10 +818,11 @@ section { padding: 96px 0; }
      width and center it so the composition simply crops off both sides. */
   .bio-collage { width: 760px; height: 560px; left: 50%; transform: translateX(-38%); }
   .bio-collage-deco.spot-a { left: -70px; top: -10px; width: 300px; }
-  .bio-collage-deco.spot-b { left: 60px; right: auto; top: auto; bottom: -140px; width: 460px; z-index: 0; }
+  .bio-collage-deco.spot-b { left: 60px; right: auto; top: auto; bottom: -25px; width: 460px; z-index: 0; }
   .bio-collage-deco.scribble { right: 2%; top: 40%; width: 320px; }
-  .bio-collage-section { padding-bottom: 140px; }
+  .bio-collage-section { padding-bottom: 40px; }
   .bio-collage .cols img.bio-photo-shrink-sm { width: 21%; }
+  .bio-collage .cols img.bio-photo-shrink-md { width: 18%; }
 }
 
 .cs-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 44px 56px; align-items: start; margin: 64px auto 0; }
