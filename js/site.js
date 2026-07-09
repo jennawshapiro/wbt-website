@@ -107,7 +107,7 @@
         ? { type: "circle", color: annoColor, strokeWidth: 1.5, padding: [7, 11],
             iterations: 2, animationDuration: 900 }
         : { type: "underline", color: annoColor, strokeWidth: 1.7, padding: [2, 1],
-            iterations: 2, multiline: true, animationDuration: 650 };
+            iterations: 1, multiline: true, animationDuration: 650 };
       cfg.seed = 42 + i * 7;                 /* deterministic wobble */
       cfg.animate = !annoReduce;
       el._anno = window.RoughNotation.annotate(el, cfg);
@@ -213,8 +213,8 @@
     var tags = (item.tags || []).map(function (t) {
       return '<span class="tag">' + t + "</span>";
     }).join("");
-    var meta = isArticle
-      ? '<div class="meta">' + [item.author, item.date].filter(Boolean).join(" &middot; ") + "</div>"
+    var meta = isArticle && item.date
+      ? '<div class="meta">' + item.date + "</div>"
       : "";
     var cta = isArticle ? "Read the article →" : "Read the case study →";
     return (
