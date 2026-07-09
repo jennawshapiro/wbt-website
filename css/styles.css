@@ -926,8 +926,8 @@ section { padding: 96px 0; }
 /* ── Client logo wall ───────────────────────────────────────────────────── */
 .logo-wall { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 24px; margin-top: 44px; }
 .logo-wall-page { display: contents; }
-.logo-wall .cell { background: transparent; border: 0; aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center; padding: 10px; min-width: 0; }
-.logo-wall .cell img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.72; transition: filter 150ms var(--ease-state), opacity 150ms var(--ease-state); }
+.logo-wall .cell { background: transparent; border: 0; aspect-ratio: 3 / 2; position: relative; padding: 10px; min-width: 0; }
+.logo-wall .cell img { position: absolute; inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); object-fit: contain; filter: grayscale(1); opacity: 0.72; transition: filter 150ms var(--ease-state), opacity 150ms var(--ease-state); }
 .logo-wall .cell:hover img { filter: grayscale(0); opacity: 1; }
 .logo-wall-nav { display: none; }
 
@@ -1352,14 +1352,16 @@ html.reveal-on .hero-stack-scribble { animation: scribble-draw 1.9s cubic-bezier
 /* Clients — brand-black logos, tighter cells so the block reads larger */
 .logo-wall { gap: 30px 22px; }
 .logo-wall .cell { padding: 4px; }
-.logo-wall .cell img { filter: brightness(0); opacity: 0.9; }
+.logo-wall .cell img { inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); filter: brightness(0); opacity: 0.9; }
 .logo-wall .cell:hover img { filter: brightness(0); opacity: 1; }
 /* detailed/illustrative logos can't be flattened to a solid black silhouette — keep their tones */
 .logo-wall .cell img.logo-detailed,
 .logo-wall .cell:hover img.logo-detailed { filter: grayscale(1); }
 /* Eli's near-square campaign mark reads oversized next to the wordmarks, and its
-   grey drop-shadow must stay (not flatten to solid black) — 35% smaller, tones kept */
-.logo-wall .cell img.logo-eli { max-height: 58%; }
+   grey drop-shadow must stay (not flatten to solid black) — scaled down, tones kept.
+   Uses transform (not a percentage max-height) so it isn't affected by the
+   percentage-height-vs-aspect-ratio grid quirk that broke this on iOS Safari. */
+.logo-wall .cell img.logo-eli { transform: scale(0.58); }
 
 /* Footer tweaks */
 .footer-tag { font-size: 20px; }
