@@ -404,13 +404,14 @@ section { padding: 96px 0; }
 .footer-form input::placeholder { color: rgba(249,248,242,0.55); }
 .footer-form input:focus { outline: 2px solid var(--calm-blue); outline-offset: 1px; }
 .footer-bottom {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px;
   margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(249,248,242,0.18);
   font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--calm-blue);
 }
 .footer-bottom a { color: var(--calm-blue); text-decoration: none; }
 .footer-bottom a:hover { color: var(--cream); }
-.footer-legal { display: flex; gap: 18px; flex-wrap: wrap; text-transform: uppercase; }
+.footer-legal { display: flex; gap: 18px; flex-wrap: wrap; text-transform: uppercase; margin-left: auto; }
+.footer-credit { text-transform: uppercase; }
 .footer-social { display: flex; gap: 18px; margin-top: 20px; }
 .footer-social a { color: var(--calm-blue); display: inline-flex; transition: color 150ms var(--ease-state); }
 .footer-social a:hover { color: var(--cream); }
@@ -423,6 +424,8 @@ section { padding: 96px 0; }
   .footer-signup label { margin-left: auto; margin-right: auto; }
   .footer-social, .footer-form { justify-content: center; }
   .footer-bottom { justify-content: center; text-align: center; }
+  .footer-legal { justify-content: center; margin-left: 0; }
+  .footer-credit { flex-basis: 100%; order: 3; }
 }
 
 /* ── Contact form ───────────────────────────────────────────────────────── */
