@@ -10,7 +10,7 @@ ARTICLES=" emotional-intelligence-and-leadership in-service-of-the-group-the-fac
 
 for body in "$DB"/*.html; do
   slug=$(basename "$body" .html)
-  case "$ARTICLES" in *" $slug "*) dir="articles";; *) dir="case-studies";; esac
+  case "$ARTICLES" in *" $slug "*) dir="insights";; *) dir="case-studies";; esac
   cur="$ROOT/$dir/$slug.html"
   if [ -f "$cur" ]; then
     title=$(grep -oE '<title>[^<]*</title>' "$cur" | head -1 | sed 's/<[^>]*>//g')

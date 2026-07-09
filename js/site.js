@@ -224,7 +224,7 @@
   }
 
   renderIndex("caseStudyGrid", "caseStudyFilter", window.WBT_CASE_STUDIES, "case-studies", false);
-  renderIndex("articleGrid", "articleFilter", window.WBT_ARTICLES, "articles", true);
+  renderIndex("articleGrid", "articleFilter", window.WBT_ARTICLES, "insights", true);
 
   /* ── Featured-quote carousel (one at a time) ───────────────────────────── */
   var car = document.querySelector("[data-quote-carousel]");

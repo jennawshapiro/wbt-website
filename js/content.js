@@ -5,8 +5,8 @@
      1) Add an entry to the array below (newest first).
      2) Copy the matching template and fill it in:
           case-studies/_TEMPLATE.html   ->   case-studies/<slug>.html
-          articles/_TEMPLATE.html        ->   articles/<slug>.html
-   The "Our Work" and "Blog" index pages render their cards from these arrays
+          insights/_TEMPLATE.html        ->   insights/<slug>.html
+   The "Our Work" and "Insights" index pages render their cards from these arrays
    automatically, including the category filter. No other edits needed.
 
    Fields:
