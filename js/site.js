@@ -128,7 +128,7 @@
   var parEls = [].slice.call(document.querySelectorAll(
     ".hero-stack-gold, .hero-stack-scribble, .about-figure-blue, .about-figure-scribble," +
     " .hero-svc-deco img, .hero-band-deco img, .inset-planet, .inset-blue-bees, .inset-blue-scribble, .inset-blue-scribble-bg," +
-    " .media-row > div, .photo-frame img"
+    " .media-row > div, .photo-frame img, [data-parallax]"
   ));
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (parEls.length && !parReduce && window.matchMedia("(min-width: 820px)").matches) {
