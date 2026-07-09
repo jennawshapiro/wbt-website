@@ -213,9 +213,6 @@
     var tags = (item.tags || []).map(function (t) {
       return '<span class="tag">' + t + "</span>";
     }).join("");
-    var meta = isArticle && item.date
-      ? '<div class="meta">' + item.date + "</div>"
-      : "";
     var cta = isArticle ? "Read the article →" : "Read the case study →";
     return (
       '<a class="content-card" href="' + basePath + "/" + item.slug + '.html" data-tags="' + (item.tags || []).join("|") + '">' +
@@ -224,7 +221,6 @@
           '<div class="tags">' + tags + "</div>" +
           "<h3>" + item.title + "</h3>" +
           '<p class="excerpt">' + item.excerpt + "</p>" +
-          meta +
           '<span class="link-mono read">' + cta + "</span>" +
         "</div>" +
       "</a>"

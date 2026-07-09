@@ -116,6 +116,7 @@ h3.sub-head {
 .lede + .lede { margin-top: 20px; }
 @media (max-width: 860px) { .about-intro .lede, .about-team .lede { font-size: 17px; } }
 .about-team h2.section-head { margin-bottom: 44px; }
+.about-team.section-calm { color: var(--ink); }
 /* Any headline-support text set to 2/3 width on desktop should span full width on mobile */
 @media (max-width: 860px) { [style*="max-width: 66%"] { max-width: 100% !important; } }
 /* Legal-page (Privacy/Terms) body copy: same mobile serif scale-down as About */
