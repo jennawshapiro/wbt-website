@@ -160,10 +160,13 @@
   var parReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var parDesktopOnly = !window.matchMedia("(min-width: 820px)").matches;
   /* Below 820px most decorative parallax is disabled (elements are often
-     hidden or stacked), but the bio-page photo collages keep their layout
-     at every width, so let their layered photos drift on mobile too. */
+     hidden or stacked), but a few collages keep their layered layout at every
+     width — the bio-page photo collages plus the home about-teaser figure and
+     the about-page joy photo — so let their decorations drift on mobile too. */
   if (parDesktopOnly) {
-    parEls = parEls.filter(function (el) { return el.closest(".bio-collage"); });
+    parEls = parEls.filter(function (el) {
+      return el.closest(".bio-collage, .about-figure, .joy-photo");
+    });
   }
   if (parEls.length && !parReduce) {
     parEls.forEach(function (el) {
