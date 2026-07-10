@@ -18,7 +18,9 @@
 # Pass --mirror for an exact mirror that also removes stale files (design
 # sources are still protected).
 # ---------------------------------------------------------------------------
-set -euo pipefail
+# Note: no `set -u` — macOS ships bash 3.2, where expanding an empty array
+# (e.g. the optional DELETE=() below) under `nounset` throws "unbound variable".
+set -eo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
