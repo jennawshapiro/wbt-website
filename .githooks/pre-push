@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# pre-push hook — refresh the Google Drive mirror after each push.
+#
+# Runs sync-to-drive.sh in the BACKGROUND so it never blocks or slows the push
+# (Google Drive writes can be slow). The push proceeds immediately; the Drive
+# folder catches up a moment later. Output is logged to /tmp/wbt-drive-sync.log.
+#
+# Enabled via `git config core.hooksPath .githooks` (see HANDOFF.md setup).
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ -x "$REPO_DIR/sync-to-drive.sh" ]; then
+  ( nohup "$REPO_DIR/sync-to-drive.sh" >/tmp/wbt-drive-sync.log 2>&1 & ) >/dev/null 2>&1
+fi
+exit 0

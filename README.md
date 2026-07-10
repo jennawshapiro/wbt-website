@@ -7,8 +7,11 @@ tightened to the WBT Brand Guide and made consistent with the **Lead to Win** pa
 
 > ### 📦 Moving this to another computer / picking up the project?
 > **Read [`HANDOFF.md`](HANDOFF.md) first** — setup on a new machine, the build workflow,
-> and deployment (including the current Netlify production-deploy issue and how to publish
-> around it).
+> and the current **Git-based deploy workflow** (push to deploy).
+
+> ⚠️ **Work in the local clone `~/Projects/wbt-website`, NOT the Google-Drive folder.**
+> Drive's virtual filesystem is too slow for git/deploys. The Drive copy is now just a
+> mirror that updates automatically on push (see "Google Drive mirror" below).
 
 > **Progress & decisions:** see [`docs/PROGRESS.md`](docs/PROGRESS.md) for a running log
 > of what's been built and the reasoning behind key design choices.
@@ -30,23 +33,46 @@ rebuild needed. Full details in [`HANDOFF.md`](HANDOFF.md) §5.
 
 ---
 
-## Repository, live site & deploys
+## Repository, environments & deploys
 
-- **Live site:** **https://workbettertogether.netlify.app** (Netlify, HTTPS)
-- **Repo:** https://github.com/jennawshapiro/wbt-website (private, branch `main`)
-- **Auth:** the GitHub CLI (`gh`) is installed at `~/.local/bin/gh` and set as the git
-  credential helper; `~/.local/bin` is on `PATH`, so `git push` / `gh` work in any new
-  terminal.
-- **Pushing:** Claude commits and pushes to GitHub **on request** (not automatically):
-  `git add -A && git commit -m "…" && git push`.
-- **Deploy:** hosted on **Netlify** (team _Work Better Together_). Node + `netlify` CLI
-  are installed under `~/.local/`. Deploys are run from the CLI (not yet auto-building
-  from GitHub), so after pushing, redeploy with:
-  ```sh
-  cd "2026 WBT Website"
-  PATH="$HOME/.local/bin:$PATH" netlify deploy --prod --dir .
-  ```
-  Optional upgrade: connect the repo in the Netlify UI to auto-deploy on every push.
+**This site deploys automatically from GitHub (Netlify continuous deployment).** You do
+**not** run `netlify deploy` by hand anymore — you just `git push` and Netlify builds it
+on its servers in a few seconds.
+
+- **Working copy:** the fast local git clone at **`~/Projects/wbt-website`**. Never work
+  in the Google-Drive folder (too slow — see the mirror note below).
+- **Repo:** https://github.com/jennawshapiro/wbt-website — **public**, with two branches:
+  | Branch | Environment | URL |
+  |--------|-------------|-----|
+  | `main` | **production** | https://www.workbettertogether.coach |
+  | `staging` | **preview** | https://staging--workbettertogether.netlify.app |
+- **Host:** Netlify, project `workbettertogether` (site id
+  `e3d3d454-1375-4ac7-a08b-57fdcb82d0b3`), linked to the repo for CI. `netlify.toml` sets
+  `publish = "."` with **no build command** (the HTML is committed pre-built).
+
+### Deploy workflow — just push
+```sh
+cd ~/Projects/wbt-website
+git add -A && git commit -m "…"
+git push origin staging     # → builds the PREVIEW: staging--workbettertogether.netlify.app
+# happy with the preview? promote to live:
+git checkout main && git merge staging && git push origin main   # → www.workbettertogether.coach
+```
+
+### Google Drive mirror
+The shared Google-Drive folder is kept current automatically: a `pre-push` git hook runs
+[`sync-to-drive.sh`](sync-to-drive.sh) in the background after every push, copying the
+site files into Drive (excluding `.git` / `.claude` / tooling; it never deletes, so
+design sources like `.psd` kept only in Drive are safe). Run it by hand any time with
+`./sync-to-drive.sh` (or `./sync-to-drive.sh --mirror` for an exact mirror). One-time
+setup after a fresh clone: `git config core.hooksPath .githooks`.
+
+### Custom domain & email
+`www.workbettertogether.coach` is primary (Let's-Encrypt SSL via Netlify); the bare apex
+`workbettertogether.coach` 301-redirects to `www`. DNS lives at the registrar (Google/
+Squarespace nameservers): apex `A → 75.2.60.5`, `www CNAME → workbettertogether.netlify.app`.
+Google Workspace email (MX → `smtp.google.com`, SPF) is independent of hosting and
+unaffected.
 
 ---
 

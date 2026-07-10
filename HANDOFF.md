@@ -13,10 +13,16 @@ Squarespace onto **plain static HTML / CSS / JS** — no framework, no build ste
 the site, no dependencies to install to view it. It's designed to be edited by
 **prompting Claude Code**, but everything is just files you can also edit by hand.
 
-- **Live site:** https://workbettertogether.netlify.app
-- **Repo:** https://github.com/jennawshapiro/wbt-website (private, branch `main`)
-- **Host:** Netlify — team *Work Better Together*, project `workbettertogether`
-  (site id `e3d3d454-1375-4ac7-a08b-57fdcb82d0b3`)
+- **Live site (production):** https://www.workbettertogether.coach
+- **Staging (preview):** https://staging--workbettertogether.netlify.app
+- **Repo:** https://github.com/jennawshapiro/wbt-website — **public**, branches `main`
+  (production) + `staging` (preview)
+- **Host:** Netlify, project `workbettertogether` (site id
+  `e3d3d454-1375-4ac7-a08b-57fdcb82d0b3`), **linked to the repo for continuous deployment**
+  — every push builds automatically (see §7).
+- **Working copy:** the fast local clone at **`~/Projects/wbt-website`**. ⚠️ **Do not work
+  in the Google-Drive folder** — Drive's virtual filesystem is too slow for git/deploys.
+  The Drive copy is now only a mirror (see §7b).
 
 ---
 
@@ -25,24 +31,28 @@ the site, no dependencies to install to view it. It's designed to be edited by
 ### 2a. Prerequisites on the new machine
 | Tool | Why | Install |
 |------|-----|---------|
-| **git** | version control | preinstalled on macOS (or `xcode-select --install`) |
+| **git** | version control + deploys (push = deploy) | preinstalled on macOS (or `xcode-select --install`) |
 | **python3** | local preview server only | preinstalled on macOS |
-| **Node.js 18+** | only needed to run the Netlify CLI for deploys | https://nodejs.org (or `brew install node`) |
-| **Netlify CLI** | deploys | `npm install -g netlify-cli` |
-| **GitHub CLI** `gh` *(optional)* | easy auth for a private repo | `brew install gh` |
+| **GitHub CLI** `gh` *(optional)* | easy git auth | `brew install gh` then `gh auth login` |
 
-You do **not** need Node or Netlify just to *edit and preview*. Those are only for
-publishing.
+That's it. **You no longer need Node or the Netlify CLI** — deploys happen on Netlify's
+servers from GitHub. The old `netlify deploy` path is retired (see §7).
 
-### 2b. Get the code
-Deroy needs read/write access to the private repo (Jenna: add him as a collaborator at
-GitHub → repo → Settings → Collaborators). Then:
+### 2b. Get the code — clone to a FAST local disk
+Clone into `~/Projects` (a normal local folder), **not** into Google Drive:
 ```sh
-git clone https://github.com/jennawshapiro/wbt-website.git "2026 WBT Website"
-cd "2026 WBT Website"
+git clone https://github.com/jennawshapiro/wbt-website.git ~/Projects/wbt-website
+cd ~/Projects/wbt-website
+git config core.hooksPath .githooks    # enables the Google-Drive mirror hook (§7b)
 ```
-> If you'd rather not touch GitHub, you can also just **copy the whole `2026 WBT Website`
-> folder** to the new machine — the repo, tooling, and source files all live inside it.
+The repo is **public**, so no special access is needed to clone. (You still need push
+access — a GitHub account that's a collaborator — to deploy.)
+
+> **Why not Google Drive?** The project used to live in a Google-Drive-synced folder.
+> Drive presents files as an on-demand, network-backed filesystem, so every git op and
+> deploy (which reads every file) throttled to Drive's sync speed and hung for minutes at
+> a time. The local clone eliminates that. The Drive folder is kept only as a **mirror**
+> (§7b).
 
 ### 2c. The Brand Guide (asset source)
 New decorative assets (watercolor spots, textures, planet/illustration images, logos)
@@ -56,13 +66,10 @@ Deroy already has the Brand Guide (he built it). It is **not** required to build
 deploy — it's only where you grab new imagery from. When you use a new asset, **copy it
 into this repo's `assets/`** so the site stays self-contained.
 
-### 2d. Sign in to the deploy accounts (one time)
-```sh
-netlify login      # opens a browser; log in as jenna@womensbraintrust.com
-netlify link       # choose the "workbettertogether" site  (or it's already linked via netlify.toml)
-```
-
-That's it — you're set up.
+### 2d. Deploy access
+No `netlify login` needed for the normal workflow — deploys are triggered by pushing to
+GitHub, and Netlify builds them itself. You just need **push access to the repo** (be a
+collaborator on `jennawshapiro/wbt-website`). That's it — you're set up.
 
 ---
 
@@ -154,52 +161,75 @@ a body file or the CSS.
 
 ---
 
-## 6. Committing to GitHub
+## 6. Committing & deploying — **push is deploy**
 
-Claude commits/pushes **only when asked**. By hand:
+There is no separate deploy command anymore. Netlify is linked to the repo, so **pushing
+a branch triggers a build automatically** (a few seconds, on Netlify's servers).
+
+**The two-branch flow:**
 ```sh
-git add -A
-git commit -m "describe the change"
-git push
+cd ~/Projects/wbt-website
+
+# 1. make your edits (rebuild pages if you changed build/bodies — see §5), then:
+git add -A && git commit -m "describe the change"
+
+# 2. push to STAGING to preview:
+git push origin staging
+#    → builds  https://staging--workbettertogether.netlify.app
+
+# 3. happy with the preview? promote to LIVE:
+git checkout main && git merge staging && git push origin main
+#    → builds  https://www.workbettertogether.coach
+git checkout staging     # go back to staging for the next round
 ```
-`gh` is set as the git credential helper on Jenna's machine; on a new machine, `gh auth
-login` (or a GitHub token) enables `git push`.
+
+Quick fixes can go straight to `main` if you're confident, but staging-first is the safe
+default — it's a real, public-URL preview identical to how production will render.
+
+**Watching a build:** Netlify dashboard →
+https://app.netlify.com/projects/workbettertogether/deploys (status per push, with logs).
+
+> **Auth:** you push over HTTPS; `gh auth login` (GitHub CLI) or a saved GitHub token
+> handles credentials. The repo is public, so cloning needs nothing; pushing needs you to
+> be a repo collaborator.
 
 ---
 
-## 7. Deploying to Netlify
+## 7. Environments, hosting & domain (reference)
 
-The site is **not** auto-building from GitHub yet — deploys are run explicitly from the
-CLI. After committing:
-```sh
-cd "2026 WBT Website"
-netlify deploy --prod --dir .
-```
-(On Jenna's machine, prefix with `PATH="$HOME/.local/bin:$PATH"` because Node/Netlify are
-installed under `~/.local/nodejs/bin`; on a fresh machine with a normal Node install you
-don't need that.)
+- **Continuous deployment:** the Netlify site is linked to `jennawshapiro/wbt-website`.
+  `netlify.toml` sets `publish = "."` and **no build command** (the HTML is committed
+  pre-built), so Netlify just publishes the repo root as-is.
+  - `main`  → **production** → https://www.workbettertogether.coach
+  - `staging` → **branch deploy** → https://staging--workbettertogether.netlify.app
+- **Custom domain:** `www.workbettertogether.coach` is primary (Let's-Encrypt SSL auto-
+  provisioned by Netlify). The bare apex `workbettertogether.coach` **301-redirects to
+  `www`**. DNS is at the registrar (Google/Squarespace nameservers), already pointed at
+  Netlify: apex `A → 75.2.60.5`, `www CNAME → workbettertogether.netlify.app`.
+- **Email is separate & safe:** Google Workspace (`MX → smtp.google.com`, SPF TXT) lives
+  in the same DNS zone but is independent of hosting — deploys/domain changes don't touch it.
+- **Repo must stay public** for pushes to auto-build. Netlify's plan blocks builds from
+  "unrecognized Git contributors" on *private* repos; making the repo public removed that
+  restriction. (Alternative if it's ever made private again: add the pushing person as a
+  verified member of the Netlify account.)
+- **No secrets in the repo** — it's static HTML/CSS/JS/images; the Netlify token is never
+  committed. That's what makes public safe.
 
-### ⚠️ Known issue — production deploys currently blocked
-As of this handoff, `netlify deploy --prod` returns **`JSONHTTPError: Forbidden`** on
-every attempt, while **draft** deploys (`netlify deploy` with no `--prod`) succeed. That
-pattern almost always means the **Netlify account has hit a usage cap** for the billing
-period (bandwidth or build minutes), which halts *production* publishes until it resets
-or the plan is upgraded.
+### 7b. Google Drive mirror
+The old Google-Drive folder is kept as a **read-only-ish mirror** so the shared Drive
+location stays current (for Jenna & backup) without being the working copy.
 
-**How to publish while that's the case:**
-- **From the dashboard (most reliable):**
-  https://app.netlify.com/projects/workbettertogether/deploys → open the newest deploy →
-  **Publish deploy**. This uses a different path than the CLI.
-- Check **Team → Usage / Billing** in Netlify for a hit cap; it resets at the start of
-  the billing cycle, or upgrade the plan to lift it.
-- Once cleared, `netlify deploy --prod --dir .` will work again normally.
-
-> There are commits built up and unpublished — publishing the latest deploy from the
-> dashboard will ship all of them at once.
-
-### Optional improvement
-Connect the GitHub repo in the Netlify UI (Site → Build & deploy) so every `git push`
-auto-deploys. That also sidesteps the CLI entirely.
+- A **`pre-push` git hook** (`.githooks/pre-push`) runs
+  [`sync-to-drive.sh`](sync-to-drive.sh) **in the background** after every push — so Drive
+  updates automatically and the push itself stays fast.
+- **Run it manually** any time: `./sync-to-drive.sh` (safe overlay — never deletes), or
+  `./sync-to-drive.sh --mirror` for an exact mirror (still keeps Drive-only design sources
+  like `.psd`).
+- It excludes `.git`, `.claude`, and tooling; the Drive path is set in the script (override
+  with `WBT_DRIVE_DIR`).
+- **One-time enable on a fresh clone:** `git config core.hooksPath .githooks`.
+- **Don't edit files in the Drive folder** — changes there are not version-controlled and
+  get overwritten by the next mirror. Edit in `~/Projects/wbt-website`.
 
 ---
 
@@ -227,6 +257,8 @@ Two house rules Claude follows, worth keeping:
 | Change design | edit `css/styles.css` (no rebuild) |
 | Change behavior/JS | edit `js/site.js` (no rebuild) |
 | Add a case study/article to the index | add an entry to `js/content.js` |
-| Save to GitHub | `git add -A && git commit -m "…" && git push` |
-| Publish | `netlify deploy --prod --dir .` — **or** Netlify dashboard → Publish deploy (see §7) |
+| Commit | `git add -A && git commit -m "…"` |
+| Preview on staging | `git push origin staging` → staging--workbettertogether.netlify.app |
+| Publish to production | `git checkout main && git merge staging && git push origin main` → www.workbettertogether.coach |
+| Refresh the Google Drive mirror | `./sync-to-drive.sh` (also auto-runs on every push) |
 | New brand asset | copy from the Brand Guide into `assets/` |
