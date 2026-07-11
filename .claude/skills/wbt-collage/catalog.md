@@ -1,9 +1,9 @@
 # WBT Collage — Asset Catalog
 
-All source assets live in the WBT **brand guide** folder (a separate Google Drive, not this repo):
+All source assets live in the WBT **brand guide** repo (a separate local project, not this repo):
 
 ```
-BRAND_ASSETS="/Users/deroyperaza/Library/CloudStorage/GoogleDrive-deroy@hyperakt.com/Shared drives/Brand & Marketing/HKT AI/Work Better Together/assets"
+BRAND_ASSETS="/Users/deroyperaza/Projects/wbt-brand-guide/assets"
 ```
 
 Sub-paths:

@@ -20,9 +20,7 @@ the site, no dependencies to install to view it. It's designed to be edited by
 - **Host:** Netlify, project `workbettertogether` (site id
   `e3d3d454-1375-4ac7-a08b-57fdcb82d0b3`), **linked to the repo for continuous deployment**
   — every push builds automatically (see §7).
-- **Working copy:** the fast local clone at **`~/Projects/wbt-website`**. ⚠️ **Do not work
-  in the Google-Drive folder** — Drive's virtual filesystem is too slow for git/deploys.
-  The Drive copy is now only a mirror (see §7b).
+- **Working copy:** the fast local clone at **`~/Projects/wbt-website`**.
 
 ---
 
@@ -43,7 +41,6 @@ Clone into `~/Projects` (a normal local folder), **not** into Google Drive:
 ```sh
 git clone https://github.com/jennawshapiro/wbt-website.git ~/Projects/wbt-website
 cd ~/Projects/wbt-website
-git config core.hooksPath .githooks    # enables the Google-Drive mirror hook (§7b)
 ```
 The repo is **public**, so no special access is needed to clone. (You still need push
 access — a GitHub account that's a collaborator — to deploy.)
@@ -51,8 +48,7 @@ access — a GitHub account that's a collaborator — to deploy.)
 > **Why not Google Drive?** The project used to live in a Google-Drive-synced folder.
 > Drive presents files as an on-demand, network-backed filesystem, so every git op and
 > deploy (which reads every file) throttled to Drive's sync speed and hung for minutes at
-> a time. The local clone eliminates that. The Drive folder is kept only as a **mirror**
-> (§7b).
+> a time. The local clone eliminates that.
 
 ### 2c. The Brand Guide (asset source)
 New decorative assets (watercolor spots, textures, planet/illustration images, logos)
@@ -215,22 +211,6 @@ https://app.netlify.com/projects/workbettertogether/deploys (status per push, wi
 - **No secrets in the repo** — it's static HTML/CSS/JS/images; the Netlify token is never
   committed. That's what makes public safe.
 
-### 7b. Google Drive mirror
-The old Google-Drive folder is kept as a **read-only-ish mirror** so the shared Drive
-location stays current (for Jenna & backup) without being the working copy.
-
-- A **`pre-push` git hook** (`.githooks/pre-push`) runs
-  [`sync-to-drive.sh`](sync-to-drive.sh) **in the background** after every push — so Drive
-  updates automatically and the push itself stays fast.
-- **Run it manually** any time: `./sync-to-drive.sh` (safe overlay — never deletes), or
-  `./sync-to-drive.sh --mirror` for an exact mirror (still keeps Drive-only design sources
-  like `.psd`).
-- It excludes `.git`, `.claude`, and tooling; the Drive path is set in the script (override
-  with `WBT_DRIVE_DIR`).
-- **One-time enable on a fresh clone:** `git config core.hooksPath .githooks`.
-- **Don't edit files in the Drive folder** — changes there are not version-controlled and
-  get overwritten by the next mirror. Edit in `~/Projects/wbt-website`.
-
 ---
 
 ## 8. Working with Claude Code (how this site is meant to be updated)
@@ -260,5 +240,4 @@ Two house rules Claude follows, worth keeping:
 | Commit | `git add -A && git commit -m "…"` |
 | Preview on staging | `git push origin staging` → staging--workbettertogether.netlify.app |
 | Publish to production | `git checkout main && git merge staging && git push origin main` → www.workbettertogether.coach |
-| Refresh the Google Drive mirror | `./sync-to-drive.sh` (also auto-runs on every push) |
 | New brand asset | copy from the Brand Guide into `assets/` |

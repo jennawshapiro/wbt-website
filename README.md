@@ -9,10 +9,6 @@ tightened to the WBT Brand Guide and made consistent with the **Lead to Win** pa
 > **Read [`HANDOFF.md`](HANDOFF.md) first** — setup on a new machine, the build workflow,
 > and the current **Git-based deploy workflow** (push to deploy).
 
-> ⚠️ **Work in the local clone `~/Projects/wbt-website`, NOT the Google-Drive folder.**
-> Drive's virtual filesystem is too slow for git/deploys. The Drive copy is now just a
-> mirror that updates automatically on push (see "Google Drive mirror" below).
-
 > **Progress & decisions:** see [`docs/PROGRESS.md`](docs/PROGRESS.md) for a running log
 > of what's been built and the reasoning behind key design choices.
 
@@ -39,8 +35,7 @@ rebuild needed. Full details in [`HANDOFF.md`](HANDOFF.md) §5.
 **not** run `netlify deploy` by hand anymore — you just `git push` and Netlify builds it
 on its servers in a few seconds.
 
-- **Working copy:** the fast local git clone at **`~/Projects/wbt-website`**. Never work
-  in the Google-Drive folder (too slow — see the mirror note below).
+- **Working copy:** the fast local git clone at **`~/Projects/wbt-website`**.
 - **Repo:** https://github.com/jennawshapiro/wbt-website — **public**, with two branches:
   | Branch | Environment | URL |
   |--------|-------------|-----|
@@ -58,14 +53,6 @@ git push origin staging     # → builds the PREVIEW: staging--workbettertogethe
 # happy with the preview? promote to live:
 git checkout main && git merge staging && git push origin main   # → www.workbettertogether.coach
 ```
-
-### Google Drive mirror
-The shared Google-Drive folder is kept current automatically: a `pre-push` git hook runs
-[`sync-to-drive.sh`](sync-to-drive.sh) in the background after every push, copying the
-site files into Drive (excluding `.git` / `.claude` / tooling; it never deletes, so
-design sources like `.psd` kept only in Drive are safe). Run it by hand any time with
-`./sync-to-drive.sh` (or `./sync-to-drive.sh --mirror` for an exact mirror). One-time
-setup after a fresh clone: `git config core.hooksPath .githooks`.
 
 ### Custom domain & email
 `www.workbettertogether.coach` is primary (Let's-Encrypt SSL via Netlify); the bare apex
